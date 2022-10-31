@@ -1,5 +1,5 @@
 import { ShoppingBasket } from '@mui/icons-material';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import React from 'react';
 
 const TodoLists = (props) => {
@@ -14,7 +14,7 @@ const TodoLists = (props) => {
          open={listsOpen}
          onClose={closeLists}
       >
-         <List>
+         <List sx={{ width: '320px' }}>
             <ListItem>
                {/* <ListItemIcon>
                   <ShoppingBasket/>
@@ -22,6 +22,7 @@ const TodoLists = (props) => {
                <ListItemText primary="Списки дел" />
             </ListItem>
          </List>
+         <Divider/>
       </Drawer>
    );
 };

@@ -2,10 +2,10 @@ import { TroubleshootTwoTone } from '@mui/icons-material';
 import { Container } from '@mui/material';
 import { useState } from 'react';
 import './App.css';
-import Header from './components/Header/Header';
-import NewTodoInput from './components/NewTodoInput/NewTodoInput';
-import TodoListName from './components/TodoListName/TodoListName';
-import TodoLists from './components/TodoLists/TodoLists';
+import Header from './components/Header';
+import NewTodoInput from './components/NewTodoInput';
+import TodoListName from './components/TodoListName';
+import TodoLists from './components/TodoLists';
 
 function App() {
    const[isListsOpen, setListsOpen] = useState(false);
