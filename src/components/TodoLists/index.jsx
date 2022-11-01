@@ -1,5 +1,5 @@
 import { ShoppingBasket } from '@mui/icons-material';
-import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import React from 'react';
 
 const TodoLists = (props) => {
@@ -16,13 +16,16 @@ const TodoLists = (props) => {
       >
          <List sx={{ width: '320px' }}>
             <ListItem>
-               {/* <ListItemIcon>
-                  <ShoppingBasket/>
-               </ListItemIcon> */}
+               <ListItemIcon>
+                  <ShoppingBasket />
+               </ListItemIcon>
                <ListItemText primary="Списки дел" />
             </ListItem>
+            <Divider />
+            <Typography onClick={closeLists}>
+               Купить в магазине
+            </Typography>
          </List>
-         <Divider/>
       </Drawer>
    );
 };

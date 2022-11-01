@@ -8,9 +8,9 @@ import TodoListName from './components/TodoListName';
 import TodoLists from './components/TodoLists';
 
 function App() {
-   const[isListsOpen, setListsOpen] = useState(false);
+   const[isListsOpen, setListsOpen] = useState(true);
    return (<>
-      <Header handleLists={()=>{setListsOpen(TroubleshootTwoTone)}}/>
+      <Header handleLists={()=>{setListsOpen(true)}}/>
       <Container sx={{ mt: '1rem' }}>
          <TodoListName todoListName={"Купить в магазине"} />
          <NewTodoInput />
