@@ -3,10 +3,11 @@ import TodoListItem from '../TodoListItem';
 
 const namesTodos = ['Упражнения в зале', 'купить в магазине', 'Дела по дому'];
 
-const TodoListsSheet = (props) => {
+const TodoListsSheet = ({todoListNames}) => {
+   
    return (
       <>
-         {namesTodos.map((el,index) => <TodoListItem key={index} name={el} />)}
+         {todoListNames.map((el,index) => <TodoListItem key={index} name={el} />)}
       </>
    );
 };

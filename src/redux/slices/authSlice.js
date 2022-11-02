@@ -3,15 +3,21 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { authAPI } from "../../api";
 
 export const fetchUserData = createAsyncThunk('auth/fetchUserData', async (params) => {
-const {data} = await authAPI.login(params)
-return data
+   const { data } = await authAPI.login(params)
+   return data
 })
 
 export const fetchAuthMe = createAsyncThunk('auth/fetchAuthMe', async (params) => {
-   const {data} = await authAPI.me()
+   const { data } = await authAPI.me()
    return data
-   })
-   
+})
+
+export const fetchRegistration = createAsyncThunk('auth/fetchRegistration', async (params) => {
+   const { data } = await authAPI.register(params)
+   return data
+})
+
+
 
 const initialState = {
    data: null,
@@ -21,8 +27,8 @@ const initialState = {
 const authSlice = createSlice({
    name: 'auth',
    initialState,
-   reducers:{
-      logout:(state)=>{
+   reducers: {
+      logout: (state) => {
          state.data = null;
       }
    },
@@ -51,7 +57,18 @@ const authSlice = createSlice({
          state.status = 'error';
          state.data = null;
       },
-
+      [fetchRegistration.pending]: (state) => {
+         state.status = 'loading';
+         state.data = null;
+      },
+      [fetchRegistration.fulfilled]: (state, action) => {
+         state.status = 'loaded';
+         state.data = action.payload;
+      },
+      [fetchRegistration.rejected]: (state) => {
+         state.status = 'error';
+         state.data = null;
+      },
    }
 })
 
@@ -59,4 +76,4 @@ const authSlice = createSlice({
 
 export const authReducer = authSlice.reducer;
 
-export const {logout} = authSlice.actions;
+export const { logout } = authSlice.actions;

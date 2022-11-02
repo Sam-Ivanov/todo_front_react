@@ -50,7 +50,7 @@ export default function BasicTabs() {
 
    return (
       <div className={styles.container}>
-         <Box sx={{ width: '600px' }}>
+         <Box classes={{ root: styles.root }} sx={{ width: '600px' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                   <Tab label="Sign In" {...a11yProps(0)} />

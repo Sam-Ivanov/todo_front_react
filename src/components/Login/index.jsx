@@ -29,12 +29,9 @@ const Login = () => {
       alert('Не удалось авторизоваться.')
     } else if (data.payload.token) {
       window.localStorage.setItem('token', data.payload.token)
-    } 
+    }
   }
-  // console.log(errors, isValid);
-  // if (isAuth) {
-  //   return <Navigate to='/' />
-  // }
+
   return (
     <Paper classes={{ root: styles.root }}>
       <Typography classes={{ root: styles.title }} variant="h5">
@@ -56,10 +53,13 @@ const Login = () => {
           type='password'
           error={Boolean(errors.password?.message)}
           helperText={errors.password?.message}
-          fullWidth
           {...register('password', { required: 'Укажите пароль' })}
-        />
-        <Button type="submit" size="large" variant="contained" fullWidth>
+          fullWidth />
+        <Button
+          type="submit"
+          size="large"
+          variant="contained"
+          fullWidth>
           Войти
         </Button>
       </form>

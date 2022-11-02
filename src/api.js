@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-   baseURL: 'http://localhost:3001'
+   baseURL: 'https://todo-six-self.vercel.app'
 })
 
 instance.interceptors.request.use((config)=>{
@@ -17,11 +17,8 @@ export const authAPI = {
    login(params) {
       return instance.post(`/login`, params);
    },
-   register(fullName, email, password) {
-      return instance.post(`/register`, { fullName, email, password });
-   },
-   logout() {
-      return instance.delete(`auth/login`);
+   register(params) {
+      return instance.post(`/register`, params);
    }
 }
 
