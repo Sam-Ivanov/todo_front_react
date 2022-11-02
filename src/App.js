@@ -24,12 +24,11 @@ function App() {
 
          <Container sx={{ mt: '1rem' }}>
             {isAuth ? <TodoListsDrawer
-               dataUser={isAuth}            
+               dataUser={isAuth}
                listsOpen={isListsOpen}
                closeLists={() => { setListsOpen(false) }} /> : ''}
             <Routes>
                <Route path="/" element={isAuth ? <Home /> : <AuthTab />} />
-               <Route path="*" element={<div>Страница не существует</div>} />
             </Routes>
          </Container>
       </>

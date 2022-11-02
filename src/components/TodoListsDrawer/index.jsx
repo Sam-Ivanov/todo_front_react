@@ -21,7 +21,7 @@ const TodoListsDrawer = (props) => {
          open={listsOpen}
          onClose={closeLists}>
          <List sx={{ width: '320px' }}>
-            <ListItem >
+            <ListItem classes={{ root: styles.back }}>
                <ListItemText classes={{ root: styles.root }} primary="TODO LISTS" />
                <IconButton onClick={() => { setModalOpen(true) }}>
                   <Add />
