@@ -1,0 +1,15 @@
+.item{
+   padding: 20px;
+   margin-bottom: 5px;
+}
+.container{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px;
+   cursor: pointer;
+}
+
+.container:hover{
+   background-color: rgb(243, 243, 243);
+}

@@ -1,24 +1,42 @@
-import { TroubleshootTwoTone } from '@mui/icons-material';
 import { Container } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
-import NewTodoInput from './components/NewTodoInput';
-import TodoListName from './components/TodoListName';
-import TodoLists from './components/TodoLists';
+import TodoListsDrawer from './components/TodoListsDrawer';
+import Home from './pages/Home';
+import Login from './components/Login';
+import AuthTab from './pages/AuthTab';
+import { Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAuthMe } from './redux/slices/authSlice';
+
 
 function App() {
-   const[isListsOpen, setListsOpen] = useState(true);
-   return (<>
-      <Header handleLists={()=>{setListsOpen(true)}}/>
-      <Container sx={{ mt: '1rem' }}>
-         <TodoListName todoListName={"Купить в магазине"} />
-         <NewTodoInput />
-      </Container>
-      <TodoLists
-      listsOpen={isListsOpen}
-      closeLists={()=>{setListsOpen(false)}}/>
-   </>
+   const dispatch = useDispatch();
+   const isAuth = useSelector(state => state.auth.data)
+   const [isListsOpen, setListsOpen] = useState(false);
+
+
+   useEffect(() => {
+      dispatch(fetchAuthMe())
+   }, [])
+
+   return (
+      <>
+         <Header handleLists={() => { setListsOpen(true) }} />
+         <TodoListsDrawer
+            listsOpen={isListsOpen}
+            closeLists={() => { setListsOpen(false) }} />
+         <Container sx={{ mt: '1rem' }}>
+            <Routes>
+               <Route path="/" element={isAuth ? <Home /> : <AuthTab />} />
+               {/* <Route path="/login" element={<AuthTab />} /> */}
+               {/* <Route path='/' element={AuthTab}/> */}
+               <Route path="*" element={<div>Страница не существует</div>} />
+
+            </Routes>
+         </Container>
+      </>
    );
 }
 

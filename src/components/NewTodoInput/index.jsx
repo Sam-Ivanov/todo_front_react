@@ -5,7 +5,7 @@ const NewTodoInput = (props) => {
    return (
       <TextField
          sx={{ mb: "1.5rem" }}
-         label='New todo...'
+         label='New ToDo...'
          type='search'
          variant='standard'
          fullWidth

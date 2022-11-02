@@ -1,0 +1,22 @@
+.root {
+   max-width: 400px;
+   padding: 30px;
+   border: 1px solid #dedede;
+   margin: 30px auto;
+ }
+ 
+ .field {
+   margin-bottom: 40px !important;
+ }
+ 
+ .title {
+   text-align: center !important;
+   font-weight: bold !important;
+   margin-bottom: 40px !important;
+ } 
+ 
+ .avatar {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 30px;
+ }
