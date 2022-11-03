@@ -7,19 +7,19 @@ import styles from './TodoListDrawer.module.css';
 
 const TodoListsDrawer = (props) => {
    const [isModalOpen, setModalOpen] = useState(false);
-   const closeModal = () =>{
+   const closeModal = () => {
       setModalOpen(false)
    }
    const {
-      listsOpen,
-      closeLists = Function.prototype,
+      drawerOpen,
+      drawerClose,
       dataUser
    } = props;
    return (
       <Drawer
          anchor='left'
-         open={listsOpen}
-         onClose={closeLists}>
+         open={drawerOpen}
+         onClose={drawerClose}>
          <List sx={{ width: '320px' }}>
             <ListItem classes={{ root: styles.back }}>
                <ListItemText classes={{ root: styles.root }} primary="TODO LISTS" />
@@ -28,8 +28,8 @@ const TodoListsDrawer = (props) => {
                </IconButton>
             </ListItem>
             <Divider />
-            {isModalOpen ? <NewTodoListModal closeModal={closeModal}/> : ''}
-            <TodoListsSheet todoListNames={dataUser.todoListNames}/>
+            {isModalOpen && <NewTodoListModal drawerClose={drawerClose} closeModal={closeModal} />}
+            <TodoListsSheet todoListNames={dataUser?.todoListNames} drawerClose={drawerClose} />
          </List>
       </Drawer>
    );

@@ -9,6 +9,7 @@ export const fetchTodos = createAsyncThunk('todos/fetchTodos', async () => {
 const initialState = {
    todos: {
       items: [],
+      mainList: null,
       status: 'loading'
    }
 };
@@ -16,7 +17,15 @@ const initialState = {
 const todosSlice = createSlice({
    name: 'todos',
    initialState,
-   reducer: {},
+   reducers: {
+      setMainListName: (state, action) => {
+         state.todos.mainList = action.payload;
+      },
+      deleteMainListName: (state) => {
+         state.todos.mainList = null;
+      }
+
+   },
    extraReducers: {
       [fetchTodos.pending]: (state) => {
          state.todos.status = 'loading';
@@ -35,3 +44,5 @@ const todosSlice = createSlice({
 });
 
 export const todosReducer = todosSlice.reducer;
+export const { setMainListName } = todosSlice.actions;
+export const { deleteMainListName } = todosSlice.actions;

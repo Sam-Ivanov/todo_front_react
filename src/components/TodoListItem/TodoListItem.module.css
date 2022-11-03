@@ -1,8 +1,9 @@
-.item{
+.item {
    padding: 20px;
    margin-bottom: 5px;
+   flex: 1 1 auto;
 }
-.container{
+.container {
    display: flex;
    justify-content: space-between;
    align-items: center;
@@ -10,6 +11,9 @@
    cursor: pointer;
 }
 
-.container:hover{
+.btn {
+   flex: 0 0 auto;
+}
+.container:hover {
    background-color: rgb(243, 243, 243);
 }

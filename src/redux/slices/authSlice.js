@@ -1,6 +1,6 @@
-import { Email } from "@mui/icons-material";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { authAPI } from "../../api";
+import { userAPI } from "../../api";
 
 export const fetchUserData = createAsyncThunk('auth/fetchUserData', async (params) => {
    const { data } = await authAPI.login(params)
@@ -17,7 +17,12 @@ export const fetchRegistration = createAsyncThunk('auth/fetchRegistration', asyn
    return data
 })
 
+export const fetchUpdateTodoListNames = createAsyncThunk('user/fetchUpdateTodoListNames', async (params) => {
+   const { data } = await userAPI.updateTodoListNames(params);
+   return data
+})
 
+// newTodoListNames
 
 const initialState = {
    data: null,
@@ -45,6 +50,7 @@ const authSlice = createSlice({
          state.status = 'error';
          state.data = null;
       },
+
       [fetchAuthMe.pending]: (state) => {
          state.status = 'loading';
          state.data = null;
@@ -57,6 +63,7 @@ const authSlice = createSlice({
          state.status = 'error';
          state.data = null;
       },
+
       [fetchRegistration.pending]: (state) => {
          state.status = 'loading';
          state.data = null;
@@ -68,6 +75,17 @@ const authSlice = createSlice({
       [fetchRegistration.rejected]: (state) => {
          state.status = 'error';
          state.data = null;
+      },
+
+      [fetchUpdateTodoListNames.pending]: (state) => {
+         state.status = 'loading';
+      },
+      [fetchUpdateTodoListNames.fulfilled]: (state, action) => {
+         state.status = 'loaded';
+         state.data = action.payload;
+      },
+      [fetchUpdateTodoListNames.rejected]: (state) => {
+         state.status = 'error';
       },
    }
 })

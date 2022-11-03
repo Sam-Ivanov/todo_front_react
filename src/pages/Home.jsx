@@ -10,6 +10,8 @@ import { fetchTodos } from '../redux/slices/todosSlice'
 const Home = () => {
    const dispatch = useDispatch();
    const { todos } = useSelector(state => state.todos)
+   const mainList = useSelector(state => state.todos.todos.mainList);
+
    const isListsExist = useSelector(state => state.auth.data.todoListNames)
 
    const isTodosLoading = todos.status === 'loading';
@@ -19,12 +21,14 @@ const Home = () => {
    }, [])
 
    return (
-
       <>
-         <TodoListName todoListName={"купить в магазине"} />
-         <NewTodoInput />
-         <TodoItems todos={todos.items} isTodosLoading={isTodosLoading} />
-         
+         {
+            mainList && <div>
+               <TodoListName todoListName={mainList} />
+               <NewTodoInput />
+               <TodoItems mainList={mainList} todos={todos.items} isTodosLoading={isTodosLoading} />
+            </div>
+         }
       </>
    );
 };
