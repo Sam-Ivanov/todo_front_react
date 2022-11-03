@@ -1,16 +1,20 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import TodoItem from '../TodoItem';
 
 
-const TodoItems = ({todos, isTodosLoading}) => {
+const TodoItems = ({ todos, isTodosLoading, mainList }) => {
    return (
       <>
-         {(isTodosLoading ? [...Array(1)] : todos).map((el, index) =>
-            isTodosLoading
-               ?
-               (<TodoItem key={index} isLoading={true}/> )
-               :
-               (<TodoItem key={el._id} completed={el.completed} text={el.text} id={el._id}/>))}
+         {
+            <div>
+               {(isTodosLoading ? [...Array(1)] : todos.filter(el => el.todoListName === mainList)).map((el, index) => isTodosLoading
+                  ?
+                  (<TodoItem key={index} isLoading={true} />)
+                  :
+                  (<TodoItem key={el._id} completed={el.completed} text={el.text} id={el._id} />))}
+            </div>
+         }
       </>
    );
 };
