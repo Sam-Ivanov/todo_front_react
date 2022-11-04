@@ -11,7 +11,6 @@ instance.interceptors.request.use((config) => {
    return config;
 })
 
-
 export const authAPI = {
    me() {
       return instance.get('/me');
@@ -33,5 +32,12 @@ export const userAPI = {
 export const todosAPI = {
    get() {
       return instance.get('/todos');
+   },
+   createTodo(params) {
+      return instance.post('/todos', params);
+   },
+   deleteTodo(params) {
+      return instance.post('/todos', params);
    }
+
 }

@@ -6,6 +6,12 @@ export const fetchTodos = createAsyncThunk('todos/fetchTodos', async () => {
    return data;
 })
 
+export const fetchCreateTodo = createAsyncThunk('todos/fetchCreateTodo', async (params) => {
+   const { data } = await todosAPI.createTodo(params);
+   return data;
+})
+
+
 const initialState = {
    todos: {
       items: [],
@@ -39,7 +45,17 @@ const todosSlice = createSlice({
          state.todos.status = 'error';
          state.todos.items = [];
       },
-
+      [fetchCreateTodo.pending]: (state) => {
+         state.todos.status = 'loading';
+         // state.todos.items = [];
+      },
+      [fetchCreateTodo.fulfilled]: (state, action) => {
+         state.todos.status = 'loaded';
+         state.todos.items.push(action.payload);
+      },
+      [fetchCreateTodo.rejected]: (state) => {
+         state.todos.status = 'error';
+      },
    }
 });
 

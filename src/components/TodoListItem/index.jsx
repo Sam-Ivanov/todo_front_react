@@ -18,10 +18,11 @@ const TodoListItem = (props) => {
 
    return (
       <div className={styles.container} >
-         <div className={styles.item} onClick={() => {
-            dispatch(setMainListName(props.name));
-            props.drawerClose();
-         }}>
+         <div className={styles.item}
+            onClick={() => {
+               dispatch(setMainListName(props.name));
+               props.drawerClose();
+            }}>
             {props.name}
          </div>
          <div className={styles.btn}>
