@@ -83,6 +83,7 @@ const authSlice = createSlice({
       [fetchUpdateTodoListNames.fulfilled]: (state, action) => {
          state.status = 'loaded';
          state.data = action.payload;
+
       },
       [fetchUpdateTodoListNames.rejected]: (state) => {
          state.status = 'error';
