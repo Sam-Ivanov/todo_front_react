@@ -1,5 +1,5 @@
 import { Add } from '@mui/icons-material';
-import { Divider, Drawer, IconButton, List, ListItem, ListItemText } from '@mui/material';
+import { Divider, Drawer, IconButton, List } from '@mui/material';
 import React, { useState } from 'react';
 import NewTodoListModal from '../NewTodoListModal';
 import TodoListsSheet from '../TodoListsSheet';
@@ -21,12 +21,18 @@ const TodoListsDrawer = (props) => {
          open={drawerOpen}
          onClose={drawerClose}>
          <List sx={{ width: '320px' }}>
-            <ListItem classes={{ root: styles.back }}>
-               <ListItemText classes={{ root: styles.root }} primary="TODO LISTS" />
+            {/* <ListItem classes={{ root: styles.back }}>
+               <ListItemText classes={{ primary: styles.root }} primary="TODO LISTS" />
                <IconButton onClick={() => { setModalOpen(true) }}>
                   <Add />
                </IconButton>
-            </ListItem>
+            </ListItem> */}
+            <div className={styles.back}>
+               <div className={styles.root}>TODO LISTS</div>
+               <IconButton onClick={() => { setModalOpen(true) }}>
+                  <Add />
+               </IconButton>
+            </div>
             <Divider />
             {isModalOpen && <NewTodoListModal drawerClose={drawerClose} closeModal={closeModal} />}
             <TodoListsSheet todoListNames={dataUser?.todoListNames} drawerClose={drawerClose} />

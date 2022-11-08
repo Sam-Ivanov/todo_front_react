@@ -15,7 +15,6 @@ const NewTodoInput = (props) => {
    });
 
    const onSubmit = async (values) => {
-      console.log(values);
 
       dispatch(fetchCreateTodo({
          'todoListName': todoListName,

@@ -4,7 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import styles from './AuthTab.module.css'
+import styles from './AuthPage.module.css'
 import Login from '../../components/Login';
 import Registration from '../../components/Registration';
 
@@ -41,7 +41,7 @@ function a11yProps(index) {
    };
 }
 
-export default function BasicTabs() {
+export default function AuthPage() {
    const [value, setValue] = React.useState(0);
 
    const handleChange = (event, newValue) => {
@@ -50,8 +50,8 @@ export default function BasicTabs() {
 
    return (
       <div className={styles.container}>
-         <Box  classes={{ root: styles.root }} sx={{ width: '600px' }}>
-            <Box  sx={{ borderBottom: 1, borderColor: 'divider' }}>
+         <Box classes={{ root: styles.root }} sx={{ width: '600px' }}>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                   <Tab label="Sign In" {...a11yProps(0)} />
                   <Tab label="Registration" {...a11yProps(1)} />
@@ -61,7 +61,7 @@ export default function BasicTabs() {
                <Login />
             </TabPanel>
             <TabPanel value={value} index={1}>
-               <Registration/>
+               <Registration />
             </TabPanel>
          </Box>
       </div>

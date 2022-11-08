@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchTodos } from '../redux/slices/todosSlice'
 
 
-const Home = () => {
+const HomePage = () => {
    const dispatch = useDispatch();
    const { todos } = useSelector(state => state.todos)
    const mainList = useSelector(state => state.todos.todos.mainList);
@@ -19,15 +19,21 @@ const Home = () => {
    return (
       <>
          {
-            mainList && <div>
-               <TodoListName todoListName={mainList} />
-               <NewTodoInput />
-               <TodoItems mainList={mainList} todos={todos.items} isTodosLoading={isTodosLoading} />
-            </div>
+            mainList
+               ?
+               <div>
+                  <TodoListName todoListName={mainList} />
+                  <NewTodoInput />
+                  <TodoItems mainList={mainList} todos={todos.items} isTodosLoading={isTodosLoading} />
+               </div>
+               :
+               <div>
+                  Список пуст...
+               </div>
          }
       </>
    );
 };
 
-export default Home;
+export default HomePage;
 

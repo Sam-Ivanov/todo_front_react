@@ -10,7 +10,6 @@ const TodoListItem = (props) => {
    const dispatch = useDispatch();
    const todoListNames = useSelector(state => state.auth.data.todoListNames)
 
-
    const deleteTodoListNameItem = (name) => {
       const todoList = todoListNames.filter(el => el !== name);
       dispatch(fetchUpdateTodoListNames({ 'todoListNames': todoList }))

@@ -8,7 +8,7 @@ import TodoListsDrawer from '../TodoListsDrawer';
 
 const Header = ({ isAuth }) => {
    const [anchorEl, setAnchorEl] = useState(null);
-   const [isDrawerOpen, setDrawerOpen] = useState(true);
+   const [isDrawerOpen, setDrawerOpen] = useState(false);
    const dispatch = useDispatch();
    const onClickLogout = () => {
       if (window.confirm('Вы действительно хотите выйти?')) {
