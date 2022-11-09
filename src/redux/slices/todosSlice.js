@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { todosAPI } from "../../api";
+import { todosAPI } from "../../api/api";
 
 export const fetchTodos = createAsyncThunk('todos/fetchTodos', async () => {
    const { data } = await todosAPI.get();

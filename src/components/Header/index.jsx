@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { AppBar, IconButton, MenuItem, Toolbar, Typography, Menu, Button } from '@mui/material';
+import { AppBar, IconButton, MenuItem, Toolbar, Typography, Menu } from '@mui/material';
 import { List } from '@mui/icons-material';
 import { Avatar } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/slices/authSlice';
-import TodoListsDrawer from '../TodoListsDrawer';
+import SidebarDrawer from '../SidebarDrawer';
 
 const Header = ({ isAuth }) => {
    const [anchorEl, setAnchorEl] = useState(null);
@@ -73,7 +73,7 @@ const Header = ({ isAuth }) => {
          </Toolbar>
       </AppBar>
       {isAuth &&
-         <TodoListsDrawer
+         <SidebarDrawer
             dataUser={isAuth}
             drawerOpen={isDrawerOpen}
             drawerClose={() => { setDrawerOpen(false) }} />}

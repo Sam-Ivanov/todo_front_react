@@ -1,11 +1,11 @@
 import { Add } from '@mui/icons-material';
 import { Divider, Drawer, IconButton, List } from '@mui/material';
 import React, { useState } from 'react';
-import NewTodoListModal from '../NewTodoListModal';
-import TodoListsSheet from '../TodoListsSheet';
-import styles from './TodoListDrawer.module.css';
+import NewSidebarTodoListNameInput from '../NewSidebarTodoListNameInput';
+import SidebarTodoListNameItems from '../SidebarTodoListNameItems';
+import styles from './SidebarDrawer.module.css';
 
-const TodoListsDrawer = (props) => {
+const SidebarDrawer = (props) => {
    const [isModalOpen, setModalOpen] = useState(false);
    const closeModal = () => {
       setModalOpen(false)
@@ -34,11 +34,11 @@ const TodoListsDrawer = (props) => {
                </IconButton>
             </div>
             <Divider />
-            {isModalOpen && <NewTodoListModal drawerClose={drawerClose} closeModal={closeModal} />}
-            <TodoListsSheet todoListNames={dataUser?.todoListNames} drawerClose={drawerClose} />
+            {isModalOpen && <NewSidebarTodoListNameInput drawerClose={drawerClose} closeModal={closeModal} />}
+            <SidebarTodoListNameItems todoListNames={dataUser?.todoListNames} drawerClose={drawerClose} />
          </List>
       </Drawer>
    );
 };
 
-export default TodoListsDrawer;
+export default SidebarDrawer;

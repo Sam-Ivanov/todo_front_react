@@ -3,10 +3,10 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUpdateTodoListNames } from '../../redux/slices/authSlice';
-import styles from './NewTodoListModal.module.css'
+import styles from './NewSidebarTodoListNameInput.module.css'
 
 
-const NewTodoListModal = ({ closeModal }) => {
+const NewSidebarTodoListNameInput = ({ closeModal }) => {
    const dispatch = useDispatch();
    const todoListNames = useSelector(state => [...state.auth.data.todoListNames]);
 
@@ -42,4 +42,4 @@ const NewTodoListModal = ({ closeModal }) => {
    );
 };
 
-export default NewTodoListModal;
+export default NewSidebarTodoListNameInput;

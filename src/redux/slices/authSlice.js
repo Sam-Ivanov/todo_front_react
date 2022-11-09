@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { authAPI } from "../../api";
-import { userAPI } from "../../api";
+import { authAPI } from "../../api/api";
+import { userAPI } from "../../api/api";
 
 export const fetchUserData = createAsyncThunk('auth/fetchUserData', async (params) => {
    const { data } = await authAPI.login(params)
@@ -83,15 +83,12 @@ const authSlice = createSlice({
       [fetchUpdateTodoListNames.fulfilled]: (state, action) => {
          state.status = 'loaded';
          state.data = action.payload;
-
       },
       [fetchUpdateTodoListNames.rejected]: (state) => {
          state.status = 'error';
       },
    }
 })
-
-
 
 export const authReducer = authSlice.reducer;
 

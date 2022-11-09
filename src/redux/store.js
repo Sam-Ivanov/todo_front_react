@@ -4,8 +4,8 @@ import { todosReducer } from "./slices/todosSlice";
 
 const store = configureStore({
    reducer: {
-      todos:todosReducer,
-      auth:authReducer
+      todos: todosReducer,
+      auth: authReducer
    }
 });
 

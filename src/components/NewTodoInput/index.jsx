@@ -2,7 +2,6 @@ import { TextField } from '@mui/material';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { todosAPI } from '../../api';
 import { fetchCreateTodo } from '../../redux/slices/todosSlice';
 
 const NewTodoInput = (props) => {

@@ -3,10 +3,10 @@ import { IconButton } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUpdateTodoListNames } from '../../redux/slices/authSlice';
-import styles from './TodoListItem.module.css'
+import styles from './SidebarTodoListNameItem.module.css'
 import { setMainListName, deleteMainListName } from '../../redux/slices/todosSlice';
 
-const TodoListItem = (props) => {
+const SidebarTodoListNameItem = (props) => {
    const dispatch = useDispatch();
    const todoListNames = useSelector(state => state.auth.data.todoListNames)
 
@@ -36,4 +36,4 @@ const TodoListItem = (props) => {
    );
 };
 
-export default TodoListItem;
+export default SidebarTodoListNameItem;
