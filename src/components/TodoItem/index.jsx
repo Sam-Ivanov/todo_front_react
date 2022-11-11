@@ -5,6 +5,7 @@ import styles from './TodoItem.module.css'
 
 const TodoItem = (props) => {
 
+
    const [anchorEl, setAnchorEl] = React.useState(null);
 
    if (props.isLoading) {
@@ -22,11 +23,11 @@ const TodoItem = (props) => {
 
    return (<>
       <div className={styles.container}>
-         <div className={props.completed ? styles.completed : ''}>
+         <div className={Boolean(+props.completed) ? styles.completed : ''}>
             {props.text}
          </div>
          <div className={styles.edit}>
-            <Checkbox checked={props.completed} />
+            <Checkbox checked={(Boolean(+props.completed))} />
             <IconButton
                onClick={handleMenu}>
                <MoreVert />
