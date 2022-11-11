@@ -23,11 +23,11 @@ const TodoItem = (props) => {
 
    return (<>
       <div className={styles.container}>
-         <div className={Boolean(+props.completed) ? styles.completed : ''}>
+         <div className={props.completed ? styles.completed : ''}>
             {props.text}
          </div>
          <div className={styles.edit}>
-            <Checkbox checked={(Boolean(+props.completed))} />
+            <Checkbox checked={props.completed} />
             <IconButton
                onClick={handleMenu}>
                <MoreVert />
