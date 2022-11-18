@@ -26,6 +26,7 @@ const NewTodoInput: React.FC = (props) => {
    return (
       <form onSubmit={handleSubmit(onSubmit)}>
          <TextField
+            autoComplete="off"
             sx={{ mb: "1.5rem" }}
             label='New ToDo...'
             type='text'
