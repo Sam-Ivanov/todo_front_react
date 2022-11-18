@@ -1,0 +1,13 @@
+.root {
+   text-align: center;
+   font-weight: 500;
+   font-size: 1rem;
+   flex: 1 0 auto;
+}
+
+.back {
+   background-color: rgb(245, 245, 245);
+   display: flex;
+   align-items: center;
+   padding: 10px;
+}
