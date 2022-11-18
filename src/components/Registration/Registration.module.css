@@ -3,20 +3,20 @@
    padding: 30px;
    border: 1px solid #dedede;
    margin: 30px auto;
- }
- 
- .field {
+}
+
+.field {
    margin-bottom: 40px !important;
- }
- 
- .title {
+}
+
+.title {
    text-align: center !important;
    font-weight: bold !important;
    margin-bottom: 40px !important;
- } 
- 
- .avatar {
+}
+
+.avatar {
    display: flex;
    justify-content: center;
    margin-bottom: 30px;
- }
+}

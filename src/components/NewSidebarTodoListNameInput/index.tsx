@@ -1,14 +1,17 @@
 import { TextField } from '@mui/material';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchUpdateTodoListNames } from '../../redux/slices/authSlice';
 import styles from './NewSidebarTodoListNameInput.module.css'
 
+type NewSidebarTodoListNameInputType = {
+   closeInput: () => void
+}
 
-const NewSidebarTodoListNameInput = ({ closeModal }) => {
-   const dispatch = useDispatch();
-   const todoListNames = useSelector(state => [...state.auth.data.todoListNames]);
+const NewSidebarTodoListNameInput: React.FC<NewSidebarTodoListNameInputType> = ({ closeInput }) => {
+   const dispatch = useAppDispatch();
+   const todoListNames = useAppSelector(state => state.auth.data?.todoListNames);
 
    const { register, handleSubmit } = useForm({
       defaultValues: {
@@ -16,14 +19,18 @@ const NewSidebarTodoListNameInput = ({ closeModal }) => {
       }
    });
 
-   const onSubmit = async (values) => {
-      if (todoListNames.includes(values.listName)) {
+   const onSubmit = async (values: any) => {
+      if (todoListNames?.includes(values.listName)) {
          alert('Лист с таким именем уже существует');
          return;
       }
-      todoListNames.push(values.listName);
-      dispatch(fetchUpdateTodoListNames({ "todoListNames": todoListNames }))
-      closeModal();
+
+      if (todoListNames) {
+         const newTodoListNames = [...todoListNames];
+         newTodoListNames.push(values.listName);
+         dispatch(fetchUpdateTodoListNames({ "todoListNames": newTodoListNames }))
+         closeInput();
+      }
    }
 
    return (
@@ -35,7 +42,7 @@ const NewSidebarTodoListNameInput = ({ closeModal }) => {
                label="New List Name"
                {...register('listName')}
                fullWidth
-               onBlur={closeModal}
+               onBlur={closeInput}
             />
          </form>
       </div>

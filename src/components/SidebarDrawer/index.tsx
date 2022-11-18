@@ -1,14 +1,21 @@
 import { Add } from '@mui/icons-material';
 import { Divider, Drawer, IconButton, List } from '@mui/material';
 import React, { useState } from 'react';
+import { dataUserType } from '../../redux/slices/authSlice';
 import NewSidebarTodoListNameInput from '../NewSidebarTodoListNameInput';
 import SidebarTodoListNameItems from '../SidebarTodoListNameItems';
 import styles from './SidebarDrawer.module.css';
 
-const SidebarDrawer = (props) => {
-   const [isModalOpen, setModalOpen] = useState(false);
-   const closeModal = () => {
-      setModalOpen(false)
+type SidebarDrawerType = {
+   dataUser: dataUserType | null,
+   drawerOpen: boolean,
+   drawerClose: () => void
+}
+
+const SidebarDrawer: React.FC<SidebarDrawerType> = (props) => {
+   const [isShowInput, setShowInput] = useState(false);
+   const closeInput = () => {
+      setShowInput(false)
    }
    const {
       drawerOpen,
@@ -21,20 +28,14 @@ const SidebarDrawer = (props) => {
          open={drawerOpen}
          onClose={drawerClose}>
          <List sx={{ width: '320px' }}>
-            {/* <ListItem classes={{ root: styles.back }}>
-               <ListItemText classes={{ primary: styles.root }} primary="TODO LISTS" />
-               <IconButton onClick={() => { setModalOpen(true) }}>
-                  <Add />
-               </IconButton>
-            </ListItem> */}
             <div className={styles.back}>
                <div className={styles.root}>TODO LISTS</div>
-               <IconButton onClick={() => { setModalOpen(true) }}>
+               <IconButton onClick={() => { setShowInput(true) }}>
                   <Add />
                </IconButton>
             </div>
             <Divider />
-            {isModalOpen && <NewSidebarTodoListNameInput drawerClose={drawerClose} closeModal={closeModal} />}
+            {isShowInput && <NewSidebarTodoListNameInput /*drawerClose={drawerClose}*/ closeInput={closeInput} />}
             <SidebarTodoListNameItems todoListNames={dataUser?.todoListNames} drawerClose={drawerClose} />
          </List>
       </Drawer>
