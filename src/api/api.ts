@@ -2,8 +2,8 @@ import axios, { AxiosRequestConfig } from "axios";
 import { dataUserType } from "../redux/slices/authSlice";
 import { todosType } from "../redux/slices/todosSlice";
 const instance = axios.create({
-   baseURL: 'https://todo-six-self.vercel.app'
-   // baseURL: 'http://localhost:3001'
+   // baseURL: 'https://todo-six-self.vercel.app'
+   baseURL: 'http://localhost:3001'
 
 })
 

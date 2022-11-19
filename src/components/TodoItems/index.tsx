@@ -35,11 +35,8 @@ const TodoItems: React.FC<TodoItemsPropsType> = ({ todos, isTodosLoading, mainLi
          }
          {
             <div>
-               {(isTodosLoading ? [...Array(1)] : todosInMainList.sort((a, b) => (+b.completed) - (+a.completed)).reverse()).map((el, index) => isTodosLoading
-                  ?
-                  (<TodoItem key={index} isLoading={true} />)
-                  :
-                  (<TodoItem key={el._id} completed={el.completed} text={el.text} id={el._id} />))}
+               {todosInMainList.sort((a, b) => (+b.completed) - (+a.completed)).reverse().map((el, index) =>
+                  <TodoItem key={el._id} completed={el.completed} text={el.text} id={el._id} />)}
             </div>
          }
       </>

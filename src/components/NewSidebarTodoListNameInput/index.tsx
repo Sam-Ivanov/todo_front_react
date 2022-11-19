@@ -20,6 +20,9 @@ const NewSidebarTodoListNameInput: React.FC<NewSidebarTodoListNameInputType> = (
    });
 
    const onSubmit = async (values: any) => {
+      if (values.listName === '') {
+         return
+      }
       if (todoListNames?.includes(values.listName)) {
          alert('Лист с таким именем уже существует');
          return;
@@ -42,7 +45,9 @@ const NewSidebarTodoListNameInput: React.FC<NewSidebarTodoListNameInputType> = (
                label="New List Name"
                {...register('listName')}
                fullWidth
-               onBlur={closeInput}
+               onBlur={() => {
+                  closeInput()
+               }}
             />
          </form>
       </div>

@@ -82,7 +82,7 @@ const todosSlice = createSlice({
    extraReducers: {
       [fetchTodos.pending.type]: (state) => {
          state.status = 'loading';
-         state.todos = [];
+         // state.todos = [];
       },
       [fetchTodos.fulfilled.type]: (state, action: PayloadAction<Array<todosType>>) => {
          state.status = 'loaded';
@@ -90,7 +90,7 @@ const todosSlice = createSlice({
       },
       [fetchTodos.rejected.type]: (state) => {
          state.status = 'error';
-         state.todos = [];
+         // state.todos = [];
       },
 
       [fetchCreateTodo.pending.type]: (state) => {
@@ -107,7 +107,7 @@ const todosSlice = createSlice({
 
       [fetchUpdateManyTodos.pending.type]: (state) => {
          state.status = 'loading';
-         state.todos = [];
+         // state.todos = [];
       },
       [fetchUpdateManyTodos.fulfilled.type]: (state, action: PayloadAction<Array<todosType>>) => {
          state.status = 'loaded';
@@ -115,12 +115,12 @@ const todosSlice = createSlice({
       },
       [fetchUpdateManyTodos.rejected.type]: (state) => {
          state.status = 'error';
-         state.todos = [];
+         // state.todos = [];
       },
 
       [fetchUpdateOneTodoCompleted.pending.type]: (state) => {
          state.status = 'loading';
-         state.todos = [];
+         // state.todos = [];
       },
       [fetchUpdateOneTodoCompleted.fulfilled.type]: (state, action: PayloadAction<Array<todosType>>) => {
          state.status = 'loaded';
@@ -128,12 +128,12 @@ const todosSlice = createSlice({
       },
       [fetchUpdateOneTodoCompleted.rejected.type]: (state) => {
          state.status = 'error';
-         state.todos = [];
+         // state.todos = [];
       },
 
       [fetchUpdateOneTodoText.pending.type]: (state) => {
          state.status = 'loading';
-         state.todos = [];
+         // state.todos = [];
       },
       [fetchUpdateOneTodoText.fulfilled.type]: (state, action: PayloadAction<Array<todosType>>) => {
          state.status = 'loaded';
@@ -141,12 +141,12 @@ const todosSlice = createSlice({
       },
       [fetchUpdateOneTodoText.rejected.type]: (state) => {
          state.status = 'error';
-         state.todos = [];
+         // state.todos = [];
       },
 
       [fetchDeleteManyTodos.pending.type]: (state) => {
          state.status = 'loading';
-         state.todos = [];
+         // state.todos = [];
       },
       [fetchDeleteManyTodos.fulfilled.type]: (state, action: PayloadAction<Array<todosType>>) => {
          state.status = 'loaded';
@@ -154,12 +154,12 @@ const todosSlice = createSlice({
       },
       [fetchDeleteManyTodos.rejected.type]: (state) => {
          state.status = 'error';
-         state.todos = [];
+         // state.todos = [];
       },
 
       [fetchDeleteOneTodo.pending.type]: (state) => {
          state.status = 'loading';
-         state.todos = [];
+         // state.todos = [];
       },
       [fetchDeleteOneTodo.fulfilled.type]: (state, action: PayloadAction<Array<todosType>>) => {
          state.status = 'loaded';
@@ -167,12 +167,12 @@ const todosSlice = createSlice({
       },
       [fetchDeleteOneTodo.rejected.type]: (state) => {
          state.status = 'error';
-         state.todos = [];
+         // state.todos = [];
       },
 
       [fetchDeleteCompletedTodo.pending.type]: (state) => {
          state.status = 'loading';
-         state.todos = [];
+         // state.todos = [];
       },
       [fetchDeleteCompletedTodo.fulfilled.type]: (state, action: PayloadAction<Array<todosType>>) => {
          state.status = 'loaded';
@@ -180,7 +180,7 @@ const todosSlice = createSlice({
       },
       [fetchDeleteCompletedTodo.rejected.type]: (state) => {
          state.status = 'error';
-         state.todos = [];
+         // state.todos = [];
       },
 
    }
