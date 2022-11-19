@@ -24,9 +24,9 @@ const TodoItem: React.FC<TodoItemPropsType> = (props) => {
       setText(e.target.value)
    }
 
-   if (props.isLoading) {
-      return <div>Загрузка...</div>
-   }
+   // if (props.isLoading) {
+   //    return <div>Загрузка...</div>
+   // }
 
    const handleMenu = (event: any) => {
       setAnchorEl(event.currentTarget);

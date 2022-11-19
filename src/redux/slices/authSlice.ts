@@ -50,7 +50,7 @@ const authSlice = createSlice({
    extraReducers: {
       [fetchUserData.pending.type]: (state) => {
          state.status = 'loading';
-         state.data = null;
+         // state.data = null;
       },
       [fetchUserData.fulfilled.type]: (state, action: PayloadAction<dataUserType>) => {
          state.status = 'loaded';
@@ -58,12 +58,12 @@ const authSlice = createSlice({
       },
       [fetchUserData.rejected.type]: (state) => {
          state.status = 'error';
-         state.data = null;
+         // state.data = null;
       },
 
       [fetchAuthMe.pending.type]: (state) => {
          state.status = 'loading';
-         state.data = null;
+         // state.data = null;
       },
       [fetchAuthMe.fulfilled.type]: (state, action: PayloadAction<dataUserType>) => {
          state.status = 'loaded';
@@ -71,12 +71,12 @@ const authSlice = createSlice({
       },
       [fetchAuthMe.rejected.type]: (state) => {
          state.status = 'error';
-         state.data = null;
+         // state.data = null;
       },
 
       [fetchRegistration.pending.type]: (state) => {
          state.status = 'loading';
-         state.data = null;
+         // state.data = null;
       },
       [fetchRegistration.fulfilled.type]: (state, action: PayloadAction<dataUserType>) => {
          state.status = 'loaded';
@@ -84,7 +84,7 @@ const authSlice = createSlice({
       },
       [fetchRegistration.rejected.type]: (state) => {
          state.status = 'error';
-         state.data = null;
+         // state.data = null;
       },
 
       [fetchUpdateTodoListNames.pending.type]: (state) => {

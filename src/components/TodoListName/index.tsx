@@ -25,6 +25,10 @@ const TodoListName: React.FC = (props) => {
 
    const onSumbit = (e: any) => {
       e.preventDefault()
+      if (todoListName === "") {
+         setTodoListName(listName)
+         return
+      }
       const newTodoListNames = todoListNames?.map(el => {
          if (el === listName) {
             return el = todoListName
@@ -41,6 +45,28 @@ const TodoListName: React.FC = (props) => {
       setInputTodoListNameOpen(false)
    }
 
+   const onBlurInput = () => {
+      if (todoListName === "") {
+         setTodoListName(listName)
+         return
+      }
+      const newTodoListNames = todoListNames?.map(el => {
+         if (el === listName) {
+            return el = todoListName
+         } else return el
+      })
+      if (newTodoListNames) {
+         dispatch(fetchUpdateManyTodos({
+            "todoListName": listName,
+            "newTodoListName": todoListName
+         }))
+         dispatch(fetchUpdateTodoListNames({ "todoListNames": newTodoListNames }))
+         dispatch(setMainListName(todoListName))
+      }
+      setInputTodoListNameOpen(false)
+
+   }
+
    return (
       <div className={styles.container}>
          <div >
@@ -53,8 +79,9 @@ const TodoListName: React.FC = (props) => {
                      autoFocus
 
                      onBlur={() => {
+                        onBlurInput()
                         setInputTodoListNameOpen(false)
-                        setTodoListName(listName)
+                        // setTodoListName(listName)
                      }}
                      value={todoListName}
                      onChange={changeName}
