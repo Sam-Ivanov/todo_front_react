@@ -46,7 +46,7 @@ const Header: React.FC<HeaderPropsType> = ({ isAuth }) => {
                   variant="h5"
                   component="div"
                   sx={{ flexGrow: 1 }}>
-                  ToDo
+                  ToDoHa
                </Typography>
                {isAuth && <div>
                   <IconButton

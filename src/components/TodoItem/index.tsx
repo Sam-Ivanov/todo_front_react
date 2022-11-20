@@ -46,7 +46,7 @@ const TodoItem: React.FC<TodoItemPropsType> = (props) => {
                   "id": props.id || '',
                   "newText": text || ''
                }))
-
+               setInputOpen(false)
             }}>
                <input
                   value={text}
