@@ -1,8 +1,10 @@
 import { MoreVert } from '@mui/icons-material';
 import { Checkbox, IconButton, Menu, MenuItem } from '@mui/material';
 import React from 'react';
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchDeleteOneTodo, fetchUpdateOneTodoCompleted, fetchUpdateOneTodoText } from '../../redux/slices/todosSlice';
+import Loader from '../common/Loader';
+import Modal from '../common/Modal';
 import styles from './TodoItem.module.css'
 
 type TodoItemPropsType = {
@@ -17,7 +19,7 @@ const TodoItem: React.FC<TodoItemPropsType> = (props) => {
    const [anchorEl, setAnchorEl] = React.useState(null);
    const [isInputOpen, setInputOpen] = React.useState(false);
    const [text, setText] = React.useState(props.text);
-
+   const todoStatus = useAppSelector(state => state.todo.status)
    const dispatch = useAppDispatch();
 
    const changeText = (e: any) => {
@@ -36,8 +38,13 @@ const TodoItem: React.FC<TodoItemPropsType> = (props) => {
       setAnchorEl(null);
    };
 
+   const closeModal = () => {
+      setInputOpen(false)
+   }
+
    return (
       <>
+         {todoStatus === 'loading' && <Loader />}
          {isInputOpen
             ?
             <form onSubmit={(e) => {
@@ -52,8 +59,13 @@ const TodoItem: React.FC<TodoItemPropsType> = (props) => {
                   value={text}
                   className={styles.input}
                   autoFocus
-                  onChange={changeText}
-                  onBlur={() => { setInputOpen(false) }}
+                  onChange={(e) => {
+                     setText(e.target.value)
+                  }}
+                  onBlur={() => {
+                     setInputOpen(false);
+                     setText(props.text);
+                  }}
                />
             </form>
             :
@@ -115,8 +127,71 @@ const TodoItem: React.FC<TodoItemPropsType> = (props) => {
                </div>
             </div>
          }
+
+         {/* {isInputOpen && <Modal title='Внесите изменения:' closeModal={closeModal} />}
+         <div className={styles.container}>
+            <div onDoubleClick={() => { setInputOpen(true) }} className={props.completed ? styles.completed + ' ' + styles.item : styles.item}>
+               {props.text}
+            </div>
+            <div className={styles.edit}>
+               <Checkbox checked={props.completed} onClick={() => {
+
+                  dispatch(fetchUpdateOneTodoCompleted({
+                     "id": props.id || '',
+                     "completed": (!props.completed)
+                  }))
+
+                  // console.log({
+                  //    "id": props.id,
+                  //    "completed": (!props.completed)
+                  // })
+               }} />
+               <IconButton
+                  onClick={handleMenu}>
+                  <MoreVert />
+               </IconButton>
+               <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                     vertical: 'top',
+                     horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                     vertical: 'top',
+                     horizontal: 'right',
+                  }}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+               >
+                  <MenuItem
+                     onClick={() => {
+                        setInputOpen(true);
+                        handleClose();
+                     }}>
+                     Edit
+                  </MenuItem>
+                  <MenuItem
+                     onClick={() => {
+                        if (window.confirm('Вы действительно хотите удалить todo?')) {
+                           dispatch(fetchDeleteOneTodo({ 'id': props.id || '' }))
+                           handleClose();
+                        } else {
+                           handleClose();
+                        }
+                     }}>
+                     Detele
+                  </MenuItem>
+               </Menu>
+            </div>
+         </div>
+ */}
+
       </>
    );
 };
 
 export default TodoItem;
+
+
