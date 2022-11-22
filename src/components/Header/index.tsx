@@ -4,15 +4,19 @@ import { Avatar } from '@mui/material';
 
 
 import React, { useState } from 'react';
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { dataUserType, logout } from '../../redux/slices/authSlice';
 import SidebarDrawer from '../SidebarDrawer';
+import Loader from '../common/Loader';
 
 type HeaderPropsType = {
    isAuth: dataUserType | null
 }
 
 const Header: React.FC<HeaderPropsType> = ({ isAuth }) => {
+   const authStatus = useAppSelector(state => state.auth.status)
+   const todoStatus = useAppSelector(state => state.todo.status)
+
    const [anchorEl, setAnchorEl] = useState(null);
    const [isDrawerOpen, setDrawerOpen] = useState(false);
    const dispatch = useAppDispatch();
@@ -34,6 +38,7 @@ const Header: React.FC<HeaderPropsType> = ({ isAuth }) => {
 
    return (
       <>
+         {(todoStatus || authStatus) === 'loading' && <Loader />}
          <AppBar position='static'>
             <Toolbar >
                {isAuth &&

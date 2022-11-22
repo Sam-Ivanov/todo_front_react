@@ -31,7 +31,8 @@ function App() {
           <Route path="/loader" element={<Loader />} />
         </Routes>
       </Container>
-      {authStatus === 'loading' && <Loader />}
+      {/* {authStatus === 'loading' && <Loader />} */}
+      {/* <Loader /> */}
 
     </>
   );

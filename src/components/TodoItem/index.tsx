@@ -3,7 +3,6 @@ import { Checkbox, IconButton, Menu, MenuItem } from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchDeleteOneTodo, fetchUpdateOneTodoCompleted, fetchUpdateOneTodoText } from '../../redux/slices/todosSlice';
-import Loader from '../common/Loader';
 import Modal from '../common/Modal';
 import styles from './TodoItem.module.css'
 
@@ -44,7 +43,6 @@ const TodoItem: React.FC<TodoItemPropsType> = (props) => {
 
    return (
       <>
-         {todoStatus === 'loading' && <Loader />}
          {isInputOpen
             ?
             <form onSubmit={(e) => {
