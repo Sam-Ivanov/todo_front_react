@@ -1,4 +1,4 @@
-import { MoreVert } from '@mui/icons-material';
+import { Done, MoreVert } from '@mui/icons-material';
 import { Checkbox, IconButton, Menu, MenuItem } from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
@@ -52,19 +52,29 @@ const TodoItem: React.FC<TodoItemPropsType> = (props) => {
                   "newText": text || ''
                }))
                setInputOpen(false)
+               // console.log(text);
+               // console.log(props.id);
             }}>
-               <input
-                  value={text}
-                  className={styles.input}
-                  autoFocus
-                  onChange={(e) => {
-                     setText(e.target.value)
-                  }}
-                  onBlur={() => {
-                     setInputOpen(false);
-                     setText(props.text);
-                  }}
-               />
+               <div className={styles.textareaWrapper}>
+                  <textarea
+                     value={text}
+                     className={styles.input}
+                     autoFocus
+                     onChange={(e) => {
+                        setText(e.target.value)
+                     }}
+                     onBlur={(e) => {
+                        const target = e.relatedTarget;
+                        if (/*target?.innerHTML === 'Ok' &&*/ target?.nodeName === 'BUTTON') {
+                           return;
+                        }
+                        setInputOpen(false);
+                        setText(props.text);
+                     }}
+                  />
+                  <button className={styles.btn}><Done /></button>
+
+               </div>
             </form>
             :
             <div className={styles.container}>
@@ -183,9 +193,7 @@ const TodoItem: React.FC<TodoItemPropsType> = (props) => {
                   </MenuItem>
                </Menu>
             </div>
-         </div>
- */}
-
+         </div> */}
       </>
    );
 };

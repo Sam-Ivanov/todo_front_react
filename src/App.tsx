@@ -29,6 +29,8 @@ function App() {
           {/* <Route path="/chat" element={<ChatPage />} /> */}
           <Route path="*" element={<div>404 NOT FOUND<Link to="/">На главную</Link></div>} />
           <Route path="/loader" element={<Loader />} />
+          <Route path="/modal" element={<Modal closeModal={() => { console.log('close modal') }} />} />
+
         </Routes>
       </Container>
       {/* {authStatus === 'loading' && <Loader />} */}

@@ -38,3 +38,28 @@
    overflow: auto;
    transition: 1s;
 }
+
+.textareaWrapper {
+   display: flex;
+   align-items: center;
+   position: relative;
+}
+
+.btn {
+   height: 50px;
+   width: 50px;
+   border-radius: 50%;
+   border: none;
+   background-color: white;
+   cursor: pointer;
+   color: rgb(199, 199, 199);
+   position: absolute;
+   top: 10px;
+   right: 10px;
+}
+
+.btn:hover {
+   color: rgb(30, 209, 14);
+   transition: 0.5s;
+   box-shadow: 0 0 5px rgb(218, 218, 218);
+}
