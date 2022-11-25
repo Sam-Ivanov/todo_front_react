@@ -1,50 +1,50 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { dataUserType } from "../redux/slices/authSlice";
-import { todosType } from "../redux/slices/todosSlice";
+import { DataUserType } from "../redux/slices/authSlice";
+import { TodosType } from "../redux/slices/todosSlice";
 const instance = axios.create({
    // baseURL: 'https://todo-six-self.vercel.app'
    baseURL: 'http://localhost:3001'
 })
 
-export type loginType = {
+export type LoginType = {
    email: string,
    password: string
 }
 
-export type registerType = {
+export type RegisterType = {
    email: string,
    password: string
    fullName: string
 }
 
-export type updateTodoListNames = {
+export type UpdateTodoListNames = {
    todoListNames: Array<string>
 }
 
-export type createTodoType = {
+export type CreateTodoType = {
    todoListName: string,
    text: string
 }
 
-export type deleteOneTodoType = {
+export type DeleteOneTodoType = {
    id: string
 }
 
-export type deleteManyTodoType = {
+export type DeleteManyTodoType = {
    todoListName: string
 }
 
-export type updateOneTodoTextType = {
+export type UpdateOneTodoTextType = {
    id: string,
    newText: string
 }
 
-export type updateManyTodoListNameType = {
+export type UpdateManyTodoListNameType = {
    todoListName: string,
    newTodoListName: string
 }
 
-export type updateOneTodoCompletedType = {
+export type UpdateOneTodoCompletedType = {
    id: string,
    completed: boolean
 }
@@ -56,40 +56,40 @@ instance.interceptors.request.use((config: any) => {
 
 export const authAPI = {
    me() {
-      return instance.get<dataUserType>('/me');
+      return instance.get<DataUserType>('/me');
    },
-   login(params: loginType) {
-      return instance.post<dataUserType>('/login', params);
+   login(params: LoginType) {
+      return instance.post<DataUserType>('/login', params);
    },
-   register(params: registerType) {
-      return instance.post<dataUserType>('/register', params);
+   register(params: RegisterType) {
+      return instance.post<DataUserType>('/register', params);
    }
 }
 
 export const userAPI = {
-   updateTodoListNames(params: updateTodoListNames) {
-      return instance.patch<dataUserType>('/user', params);
+   UpdateTodoListNames(params: UpdateTodoListNames) {
+      return instance.patch<DataUserType>('/user', params);
    }
 }
 
 export const todosAPI = {
    get() {
-      return instance.get<Array<todosType>>('/todos');
+      return instance.get<Array<TodosType>>('/todos');
    },
-   createTodo(params: createTodoType) {
-      return instance.post<todosType>('/todos', params);
+   createTodo(params: CreateTodoType) {
+      return instance.post<TodosType>('/todos', params);
    },
-   deleteTodos(params: deleteManyTodoType) {
+   deleteTodos(params: DeleteManyTodoType) {
       return instance.delete<any>(`/todos/${params.todoListName}`);
    },
-   deleteOneTodo(params: deleteOneTodoType) {
+   deleteOneTodo(params: DeleteOneTodoType) {
       return instance.delete<any>(`/todo/${params.id}`);
    },
-   deleteCompletedTodo(params: deleteManyTodoType) {
+   deleteCompletedTodo(params: DeleteManyTodoType) {
       return instance.delete<any>(`/todos/completed/${params.todoListName}`);
    },
 
-   updateTodo(params: updateOneTodoTextType | updateManyTodoListNameType | updateOneTodoCompletedType) {
+   updateTodo(params: UpdateOneTodoTextType | UpdateManyTodoListNameType | UpdateOneTodoCompletedType) {
       return instance.patch<any>('/todos', params);
    }
 }

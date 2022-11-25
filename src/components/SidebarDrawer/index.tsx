@@ -1,13 +1,13 @@
 import { Add } from '@mui/icons-material';
 import { Divider, Drawer, IconButton, List } from '@mui/material';
 import React, { useState } from 'react';
-import { dataUserType } from '../../redux/slices/authSlice';
+import { DataUserType } from '../../redux/slices/authSlice';
 import NewSidebarTodoListNameInput from '../NewSidebarTodoListNameInput';
 import SidebarTodoListNameItems from '../SidebarTodoListNameItems';
 import styles from './SidebarDrawer.module.css';
 
 type SidebarDrawerType = {
-   dataUser: dataUserType | null,
+   dataUser: DataUserType | null,
    drawerOpen: boolean,
    drawerClose: () => void
 }

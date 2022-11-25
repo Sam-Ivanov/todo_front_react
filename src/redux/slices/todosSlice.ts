@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { createTodoType, deleteManyTodoType, deleteOneTodoType, todosAPI, updateManyTodoListNameType, updateOneTodoCompletedType, updateOneTodoTextType } from "../../api/api"
+import { CreateTodoType, DeleteManyTodoType, DeleteOneTodoType, todosAPI, UpdateManyTodoListNameType, UpdateOneTodoCompletedType, UpdateOneTodoTextType } from "../../api/api"
 
-export type todosType = {
+export type TodosType = {
    _id: string,
    todoListName: string,
    text: string,
@@ -9,13 +9,13 @@ export type todosType = {
    user: string
 }
 
-type todosInitialStateType = {
-   todos: Array<todosType>,
+type TodosInitialStateType = {
+   todos: Array<TodosType>,
    mainList: string,
    status: 'loading' | 'loaded' | 'error'
 }
 
-const initialState: todosInitialStateType = {
+const initialState: TodosInitialStateType = {
    todos: [],
    mainList: '',
    status: 'loading'
@@ -27,37 +27,37 @@ export const fetchTodos = createAsyncThunk('todos/fetchTodos', async (_, thunkAP
    return data;
 })
 
-export const fetchCreateTodo = createAsyncThunk('todos/fetchCreateTodo', async (params: createTodoType) => {
+export const fetchCreateTodo = createAsyncThunk('todos/fetchCreateTodo', async (params: CreateTodoType) => {
    const { data } = await todosAPI.createTodo(params);
    return data;
 })
 
-export const fetchUpdateManyTodos = createAsyncThunk('todos/fetchUpdateManyTodos', async (params: updateManyTodoListNameType) => {
+export const fetchUpdateManyTodos = createAsyncThunk('todos/fetchUpdateManyTodos', async (params: UpdateManyTodoListNameType) => {
    const { data } = await todosAPI.updateTodo(params);
    return data;
 })
 
-export const fetchUpdateOneTodoCompleted = createAsyncThunk('todos/fetchUpdateOneTodoCompleted', async (params: updateOneTodoCompletedType) => {
+export const fetchUpdateOneTodoCompleted = createAsyncThunk('todos/fetchUpdateOneTodoCompleted', async (params: UpdateOneTodoCompletedType) => {
    const { data } = await todosAPI.updateTodo(params);
    return data;
 })
 
-export const fetchUpdateOneTodoText = createAsyncThunk('todos/fetchUpdateOneTodoText', async (params: updateOneTodoTextType) => {
+export const fetchUpdateOneTodoText = createAsyncThunk('todos/fetchUpdateOneTodoText', async (params: UpdateOneTodoTextType) => {
    const { data } = await todosAPI.updateTodo(params);
    return data;
 })
 
-export const fetchDeleteManyTodos = createAsyncThunk('todos/fetchDeleteManyTodos', async (params: deleteManyTodoType) => {
+export const fetchDeleteManyTodos = createAsyncThunk('todos/fetchDeleteManyTodos', async (params: DeleteManyTodoType) => {
    const { data } = await todosAPI.deleteTodos(params)
    return data
 })
 
-export const fetchDeleteOneTodo = createAsyncThunk('todos/fetchDeleteOneTodo', async (params: deleteOneTodoType) => {
+export const fetchDeleteOneTodo = createAsyncThunk('todos/fetchDeleteOneTodo', async (params: DeleteOneTodoType) => {
    const { data } = await todosAPI.deleteOneTodo(params)
    return data
 })
 
-export const fetchDeleteCompletedTodo = createAsyncThunk('todos/fetchDeleteCompletedTodo', async (params: deleteManyTodoType) => {
+export const fetchDeleteCompletedTodo = createAsyncThunk('todos/fetchDeleteCompletedTodo', async (params: DeleteManyTodoType) => {
    const { data } = await todosAPI.deleteCompletedTodo(params)
    return data
 })
@@ -84,7 +84,7 @@ const todosSlice = createSlice({
          state.status = 'loading';
          // state.todos = [];
       },
-      [fetchTodos.fulfilled.type]: (state, action: PayloadAction<Array<todosType>>) => {
+      [fetchTodos.fulfilled.type]: (state, action: PayloadAction<Array<TodosType>>) => {
          state.status = 'loaded';
          state.todos = action.payload;
       },
@@ -97,7 +97,7 @@ const todosSlice = createSlice({
          state.status = 'loading';
          // state.todos.items = [];
       },
-      [fetchCreateTodo.fulfilled.type]: (state, action: PayloadAction<todosType>) => {
+      [fetchCreateTodo.fulfilled.type]: (state, action: PayloadAction<TodosType>) => {
          state.status = 'loaded';
          state.todos.push(action.payload);
       },
@@ -109,7 +109,7 @@ const todosSlice = createSlice({
          state.status = 'loading';
          // state.todos = [];
       },
-      [fetchUpdateManyTodos.fulfilled.type]: (state, action: PayloadAction<Array<todosType>>) => {
+      [fetchUpdateManyTodos.fulfilled.type]: (state, action: PayloadAction<Array<TodosType>>) => {
          state.status = 'loaded';
          state.todos = action.payload;
       },
@@ -122,7 +122,7 @@ const todosSlice = createSlice({
          state.status = 'loading';
          // state.todos = [];
       },
-      [fetchUpdateOneTodoCompleted.fulfilled.type]: (state, action: PayloadAction<Array<todosType>>) => {
+      [fetchUpdateOneTodoCompleted.fulfilled.type]: (state, action: PayloadAction<Array<TodosType>>) => {
          state.status = 'loaded';
          state.todos = action.payload;
       },
@@ -135,7 +135,7 @@ const todosSlice = createSlice({
          state.status = 'loading';
          // state.todos = [];
       },
-      [fetchUpdateOneTodoText.fulfilled.type]: (state, action: PayloadAction<Array<todosType>>) => {
+      [fetchUpdateOneTodoText.fulfilled.type]: (state, action: PayloadAction<Array<TodosType>>) => {
          state.status = 'loaded';
          state.todos = action.payload;
       },
@@ -148,7 +148,7 @@ const todosSlice = createSlice({
          state.status = 'loading';
          // state.todos = [];
       },
-      [fetchDeleteManyTodos.fulfilled.type]: (state, action: PayloadAction<Array<todosType>>) => {
+      [fetchDeleteManyTodos.fulfilled.type]: (state, action: PayloadAction<Array<TodosType>>) => {
          state.status = 'loaded';
          state.todos = action.payload;
       },
@@ -161,7 +161,7 @@ const todosSlice = createSlice({
          state.status = 'loading';
          // state.todos = [];
       },
-      [fetchDeleteOneTodo.fulfilled.type]: (state, action: PayloadAction<Array<todosType>>) => {
+      [fetchDeleteOneTodo.fulfilled.type]: (state, action: PayloadAction<Array<TodosType>>) => {
          state.status = 'loaded';
          state.todos = action.payload;
       },
@@ -174,7 +174,7 @@ const todosSlice = createSlice({
          state.status = 'loading';
          // state.todos = [];
       },
-      [fetchDeleteCompletedTodo.fulfilled.type]: (state, action: PayloadAction<Array<todosType>>) => {
+      [fetchDeleteCompletedTodo.fulfilled.type]: (state, action: PayloadAction<Array<TodosType>>) => {
          state.status = 'loaded';
          state.todos = action.payload;
       },

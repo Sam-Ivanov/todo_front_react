@@ -2,15 +2,14 @@ import { AppBar, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/ma
 import { List } from '@mui/icons-material';
 import { Avatar } from '@mui/material';
 
-
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { dataUserType, logout } from '../../redux/slices/authSlice';
+import { DataUserType, logout } from '../../redux/slices/authSlice';
 import SidebarDrawer from '../SidebarDrawer';
 import Loader from '../common/Loader';
 
 type HeaderPropsType = {
-   isAuth: dataUserType | null
+   isAuth: DataUserType | null
 }
 
 const Header: React.FC<HeaderPropsType> = ({ isAuth }) => {

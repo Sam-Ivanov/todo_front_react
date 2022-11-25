@@ -23,19 +23,17 @@ function App() {
   return (
     <>
       <Header isAuth={isAuth} />
-      <Container sx={{ mt: '1rem' }}>
+      <Container maxWidth='lg' sx={{ mt: '1rem' }}>
         <Routes>
           <Route path="/" element={isAuth ? <HomePage /> : <AuthPage />} />
           {/* <Route path="/chat" element={<ChatPage />} /> */}
           <Route path="*" element={<div>404 NOT FOUND<Link to="/">На главную</Link></div>} />
           <Route path="/loader" element={<Loader />} />
           <Route path="/modal" element={<Modal closeModal={() => { console.log('close modal') }} />} />
-
         </Routes>
       </Container>
       {/* {authStatus === 'loading' && <Loader />} */}
       {/* <Loader /> */}
-
     </>
   );
 }
