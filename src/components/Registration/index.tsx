@@ -7,7 +7,7 @@ import styles from './Registration.module.css';
 import { useForm } from 'react-hook-form';
 import { fetchRegistration } from '../../redux/slices/authSlice';
 import { useAppDispatch } from '../../hooks/redux';
-import { registerType } from '../../api/api';
+import { RegisterType } from '../../api/api';
 
 const Registration: React.FC = () => {
    const dispatch = useAppDispatch();
@@ -20,7 +20,7 @@ const Registration: React.FC = () => {
       mode: 'all'
    });
 
-   const onSubmit = async (values: registerType) => {
+   const onSubmit = async (values: RegisterType) => {
       const data = await dispatch(fetchRegistration(values))
       console.log(data.payload);
       if (!data.payload) {

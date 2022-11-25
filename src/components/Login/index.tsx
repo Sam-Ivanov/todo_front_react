@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import styles from "./Login.module.css";
 import { fetchUserData } from "../../redux/slices/authSlice";
 import { useAppDispatch } from "../../hooks/redux";
-import { loginType } from "../../api/api";
+import { LoginType } from "../../api/api";
 
 const Login: React.FC = () => {
    const dispatch = useAppDispatch();
@@ -19,7 +19,7 @@ const Login: React.FC = () => {
       mode: 'all'
    });
 
-   const onSubmit = async (values: loginType) => {
+   const onSubmit = async (values: LoginType) => {
       const data = await dispatch(fetchUserData(values))
       console.log(data.payload);
       if (!data.payload) {

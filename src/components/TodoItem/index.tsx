@@ -1,7 +1,7 @@
-import { MoreVert } from '@mui/icons-material';
+import { Done, MoreVert } from '@mui/icons-material';
 import { Checkbox, IconButton, Menu, MenuItem } from '@mui/material';
 import React from 'react';
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchDeleteOneTodo, fetchUpdateOneTodoCompleted, fetchUpdateOneTodoText } from '../../redux/slices/todosSlice';
 import styles from './TodoItem.module.css'
 
@@ -10,23 +10,15 @@ type TodoItemPropsType = {
    text?: string,
    id?: string,
    isLoading?: boolean,
-   key?: string | number
-}
+   key?: string | number,
+};
 
 const TodoItem: React.FC<TodoItemPropsType> = (props) => {
    const [anchorEl, setAnchorEl] = React.useState(null);
    const [isInputOpen, setInputOpen] = React.useState(false);
    const [text, setText] = React.useState(props.text);
-
+   const todoStatus = useAppSelector(state => state.todo.status);
    const dispatch = useAppDispatch();
-
-   const changeText = (e: any) => {
-      setText(e.target.value)
-   }
-
-   // if (props.isLoading) {
-   //    return <div>Загрузка...</div>
-   // }
 
    const handleMenu = (event: any) => {
       setAnchorEl(event.currentTarget);
@@ -36,44 +28,55 @@ const TodoItem: React.FC<TodoItemPropsType> = (props) => {
       setAnchorEl(null);
    };
 
+   const updateTodoText = () => {
+      if (text === props.text) {
+         setInputOpen(false);
+         return;
+      }
+      dispatch(fetchUpdateOneTodoText({
+         "id": props.id || '',
+         "newText": text || ''
+      }));
+      setInputOpen(false);
+   }
+
    return (
       <>
          {isInputOpen
             ?
             <form onSubmit={(e) => {
                e.preventDefault();
-               dispatch(fetchUpdateOneTodoText({
-                  "id": props.id || '',
-                  "newText": text || ''
-               }))
-
+               updateTodoText();
             }}>
-               <input
-                  value={text}
-                  className={styles.input}
-                  autoFocus
-                  onChange={changeText}
-                  onBlur={() => { setInputOpen(false) }}
-               />
+               <div className={styles.textareaWrapper}>
+                  <textarea
+                     value={text}
+                     className={styles.input}
+                     autoFocus
+                     onChange={(e) => {
+                        setText(e.target.value);
+                     }}
+                     onBlur={updateTodoText}
+                  />
+               </div>
             </form>
             :
             <div className={styles.container}>
-               <div onDoubleClick={() => { setInputOpen(true) }} className={props.completed ? styles.completed + ' ' + styles.item : styles.item}>
+               <div onDoubleClick={() => {
+                  setInputOpen(true);
+               }}
+                  className={props.completed ? styles.completed + ' ' + styles.item : styles.item}>
                   {props.text}
                </div>
                <div className={styles.edit}>
-                  <Checkbox checked={props.completed} onClick={() => {
-
-                     dispatch(fetchUpdateOneTodoCompleted({
-                        "id": props.id || '',
-                        "completed": (!props.completed)
-                     }))
-
-                     // console.log({
-                     //    "id": props.id,
-                     //    "completed": (!props.completed)
-                     // })
-                  }} />
+                  <Checkbox
+                     checked={props.completed}
+                     onClick={() => {
+                        dispatch(fetchUpdateOneTodoCompleted({
+                           "id": props.id || '',
+                           "completed": (!props.completed)
+                        }));
+                     }} />
                   <IconButton
                      onClick={handleMenu}>
                      <MoreVert />
@@ -103,7 +106,7 @@ const TodoItem: React.FC<TodoItemPropsType> = (props) => {
                      <MenuItem
                         onClick={() => {
                            if (window.confirm('Вы действительно хотите удалить todo?')) {
-                              dispatch(fetchDeleteOneTodo({ 'id': props.id || '' }))
+                              dispatch(fetchDeleteOneTodo({ 'id': props.id || '' }));
                               handleClose();
                            } else {
                               handleClose();
@@ -120,3 +123,5 @@ const TodoItem: React.FC<TodoItemPropsType> = (props) => {
 };
 
 export default TodoItem;
+
+

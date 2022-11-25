@@ -1,7 +1,10 @@
 .item {
    padding: 20px;
    margin-bottom: 5px;
+   margin-right: 5px;
    flex: 1 1 auto;
+   white-space: pre-line;
+   overflow: hidden;
 }
 .container {
    display: flex;

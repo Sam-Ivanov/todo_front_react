@@ -10,11 +10,17 @@
    margin-right: 15px;
    overflow: hidden;
    max-width: 1000px;
+   line-height: 2.2rem;
+   white-space: pre-line;
 }
 
 .edit {
    display: flex;
    align-items: center;
+}
+
+.editIcon {
+   color: rgb(200, 200, 200);
 }
 .input {
    border: none;
