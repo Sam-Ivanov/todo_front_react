@@ -29,7 +29,8 @@ const TodoItem: React.FC<TodoItemPropsType> = (props) => {
    };
 
    const updateTodoText = () => {
-      if (text === props.text) {
+      if (text === props.text || text === '') {
+         setText(props.text);
          setInputOpen(false);
          return;
       }

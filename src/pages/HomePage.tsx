@@ -4,6 +4,7 @@ import TodoItems from "../components/TodoItems";
 import TodoListName from "../components/TodoListName";
 import { fetchTodos } from '../redux/slices/todosSlice'
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import HomePageSelect from '../components/HomePageSelectLists';
 
 const HomePage: React.FC = () => {
    const dispatch = useAppDispatch();
@@ -35,7 +36,7 @@ const HomePage: React.FC = () => {
                </div>
                :
                <div>
-                  Выберите или создайте новый лист
+                  <HomePageSelect />
                </div>
          }
       </>
