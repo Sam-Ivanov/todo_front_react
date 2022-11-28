@@ -20,12 +20,12 @@ const Login: React.FC = () => {
    });
 
    const onSubmit = async (values: LoginType) => {
-      const data = await dispatch(fetchUserData(values))
+      const data = await dispatch(fetchUserData(values));
       console.log(data.payload);
       if (!data.payload) {
-         alert('Не удалось авторизоваться.')
+         alert('Не удалось авторизоваться.');
       }
-   }
+   };
 
    return (
       <Paper classes={{ root: styles.root }} >
@@ -49,7 +49,8 @@ const Login: React.FC = () => {
                error={Boolean(errors.password?.message)}
                helperText={errors.password?.message}
                {...register('password', { required: 'Укажите пароль' })}
-               fullWidth />
+               fullWidth
+            />
             <Button
                type="submit"
                size="large"

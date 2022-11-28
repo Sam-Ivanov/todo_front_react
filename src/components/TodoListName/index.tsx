@@ -1,6 +1,6 @@
 import { Edit } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
-import styles from './TodoListName.module.css'
+import styles from './TodoListName.module.css';
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchUpdateTodoListNames } from '../../redux/slices/authSlice';
@@ -18,7 +18,7 @@ const TodoListName: React.FC = (props) => {
    }, [listName]);
 
    const changeName = (e: any) => {
-      setTodoListName(e.target.value)
+      setTodoListName(e.target.value);
    };
 
    const updateTodoListName = () => {
@@ -27,11 +27,13 @@ const TodoListName: React.FC = (props) => {
          setInputTodoListNameOpen(false);
          return;
       }
+
       const newTodoListNames = todoListNames?.map(el => {
          if (el === listName) {
             return el = todoListName;
          } else return el;
-      })
+      });
+
       if (newTodoListNames) {
          dispatch(fetchUpdateManyTodos({
             "todoListName": listName,
@@ -67,7 +69,9 @@ const TodoListName: React.FC = (props) => {
                {listName}
             </div>}
          <div className={styles.edit}>
-            <IconButton onClick={() => { setInputTodoListNameOpen(true) }}>
+            <IconButton onClick={() => {
+               setInputTodoListNameOpen(true);
+            }}>
                <Edit
                   classes={{ root: styles.editIcon }}
                   fontSize='small' />

@@ -1,4 +1,4 @@
-import styles from './Loader.module.css'
+import styles from './Loader.module.css';
 
 const Loader = () => {
    return (
@@ -17,6 +17,6 @@ const Loader = () => {
          </div>
       </div>
    );
-}
+};
 
-export default Loader
+export default Loader;

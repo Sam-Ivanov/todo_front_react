@@ -1,7 +1,6 @@
 import { AppBar, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
 import { List } from '@mui/icons-material';
 import { Avatar } from '@mui/material';
-
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { DataUserType, logout } from '../../redux/slices/authSlice';
@@ -13,8 +12,8 @@ type HeaderPropsType = {
 }
 
 const Header: React.FC<HeaderPropsType> = ({ isAuth }) => {
-   const authStatus = useAppSelector(state => state.auth.status)
-   const todoStatus = useAppSelector(state => state.todo.status)
+   const authStatus = useAppSelector(state => state.auth.status);
+   const todoStatus = useAppSelector(state => state.todo.status);
 
    const [anchorEl, setAnchorEl] = useState(null);
    const [isDrawerOpen, setDrawerOpen] = useState(false);
@@ -23,11 +22,11 @@ const Header: React.FC<HeaderPropsType> = ({ isAuth }) => {
       if (window.confirm('Вы действительно хотите выйти?')) {
          setAnchorEl(null);
          dispatch(logout());
-         window.localStorage.removeItem('token')
+         window.localStorage.removeItem('token');
       } else {
          setAnchorEl(null);
       }
-   }
+   };
    const handleMenu = (event: any) => {
       setAnchorEl(event.currentTarget);
    };
@@ -52,44 +51,47 @@ const Header: React.FC<HeaderPropsType> = ({ isAuth }) => {
                   sx={{ flexGrow: 1 }}>
                   ToDoHa
                </Typography>
-               {isAuth && <div>
-                  <IconButton
-                     size="large"
-                     aria-label="account of current user"
-                     aria-controls="menu-appbar"
-                     aria-haspopup="true"
-                     onClick={handleMenu}
-                     color="inherit">
-                     <Avatar
-                        alt="Avatar"
-                        src=""
-                        sx={{ width: 45, height: 45 }} />
-                  </IconButton>
-                  <Menu
-                     id="menu-appbar"
-                     anchorEl={anchorEl}
-                     anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                     }}
-                     keepMounted
-                     transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                     }}
-                     open={Boolean(anchorEl)}
-                     onClose={handleClose}>
-                     <MenuItem onClick={handleClose}>Settings</MenuItem>
-                     <MenuItem onClick={onClickLogout}>Logout</MenuItem>
-                  </Menu>
-               </div>}
+               {isAuth &&
+                  <div>
+                     <IconButton
+                        size="large"
+                        aria-label="account of current user"
+                        aria-controls="menu-appbar"
+                        aria-haspopup="true"
+                        onClick={handleMenu}
+                        color="inherit">
+                        <Avatar
+                           alt="Avatar"
+                           src=""
+                           sx={{ width: 45, height: 45 }} />
+                     </IconButton>
+                     <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorEl}
+                        anchorOrigin={{
+                           vertical: 'top',
+                           horizontal: 'right',
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                           vertical: 'top',
+                           horizontal: 'right',
+                        }}
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}>
+                        <MenuItem onClick={handleClose}>Settings</MenuItem>
+                        <MenuItem onClick={onClickLogout}>Logout</MenuItem>
+                     </Menu>
+                  </div>}
             </Toolbar>
          </AppBar>
          {isAuth &&
             <SidebarDrawer
                dataUser={isAuth}
                drawerOpen={isDrawerOpen}
-               drawerClose={() => { setDrawerOpen(false) }} />}
+               drawerClose={() => {
+                  setDrawerOpen(false);
+               }} />}
       </>
    );
 };

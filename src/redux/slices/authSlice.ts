@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { authAPI, userAPI, LoginType, RegisterType, UpdateTodoListNames } from "../../api/api";
 
 export type DataUserType = {
@@ -20,24 +20,24 @@ const initialState: AuthInitialStateType = {
 }
 
 export const fetchUserData = createAsyncThunk('auth/fetchUserData', async (params: LoginType) => {
-   const { data } = await authAPI.login(params)
-   return data
-})
+   const { data } = await authAPI.login(params);
+   return data;
+});
 
 export const fetchAuthMe = createAsyncThunk('auth/fetchAuthMe', async () => {
-   const { data } = await authAPI.me()
-   return data
-})
+   const { data } = await authAPI.me();
+   return data;
+});
 
 export const fetchRegistration = createAsyncThunk('auth/fetchRegistration', async (params: RegisterType) => {
-   const { data } = await authAPI.register(params)
-   return data
-})
+   const { data } = await authAPI.register(params);
+   return data;
+});
 
 export const fetchUpdateTodoListNames = createAsyncThunk('user/fetchUpdateTodoListNames', async (params: UpdateTodoListNames) => {
    const { data } = await userAPI.UpdateTodoListNames(params);
-   return data
-})
+   return data;
+});
 
 const authSlice = createSlice({
    name: 'auth',
@@ -96,9 +96,9 @@ const authSlice = createSlice({
       },
       [fetchUpdateTodoListNames.rejected.type]: (state) => {
          state.status = 'error';
-      },
+      }
    }
-})
+});
 
 export const authReducer = authSlice.reducer;
 

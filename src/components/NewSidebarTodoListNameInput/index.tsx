@@ -3,7 +3,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchUpdateTodoListNames } from '../../redux/slices/authSlice';
-import styles from './NewSidebarTodoListNameInput.module.css'
+import styles from './NewSidebarTodoListNameInput.module.css';
 
 type NewSidebarTodoListNameInputType = {
    closeInput: () => void
@@ -21,7 +21,7 @@ const NewSidebarTodoListNameInput: React.FC<NewSidebarTodoListNameInputType> = (
 
    const onSubmit = async (values: any) => {
       if (values.listName === '') {
-         return
+         return;
       }
       if (todoListNames?.includes(values.listName)) {
          alert('Лист с таким именем уже существует');
@@ -31,10 +31,10 @@ const NewSidebarTodoListNameInput: React.FC<NewSidebarTodoListNameInputType> = (
       if (todoListNames) {
          const newTodoListNames = [...todoListNames];
          newTodoListNames.push(values.listName);
-         dispatch(fetchUpdateTodoListNames({ "todoListNames": newTodoListNames }))
+         dispatch(fetchUpdateTodoListNames({ "todoListNames": newTodoListNames }));
          closeInput();
       }
-   }
+   };
 
    return (
       <div >
@@ -46,7 +46,7 @@ const NewSidebarTodoListNameInput: React.FC<NewSidebarTodoListNameInputType> = (
                {...register('listName')}
                fullWidth
                onBlur={() => {
-                  closeInput()
+                  closeInput();
                }}
             />
          </form>

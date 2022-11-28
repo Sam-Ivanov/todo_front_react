@@ -10,7 +10,7 @@ type SidebarDrawerPropsType = {
    dataUser: DataUserType | null,
    drawerOpen: boolean,
    drawerClose: () => void
-};
+}
 
 const SidebarDrawer: React.FC<SidebarDrawerPropsType> = ({ drawerOpen, drawerClose, dataUser }) => {
    const [isShowInput, setShowInput] = useState(false);

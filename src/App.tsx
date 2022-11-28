@@ -9,16 +9,15 @@ import { fetchAuthMe } from './redux/slices/authSlice';
 import { useAppDispatch, useAppSelector } from './hooks/redux';
 import Modal from './components/common/Modal';
 import Loader from './components/common/Loader';
-// import ChatPage from './pages/ChatPage';
 
 function App() {
   const dispatch = useAppDispatch();
-  const isAuth = useAppSelector(state => state.auth.data)
-  const authStatus = useAppSelector(state => state.auth.status)
+  const isAuth = useAppSelector(state => state.auth.data);
+  const authStatus = useAppSelector(state => state.auth.status);
 
   useEffect(() => {
-    dispatch(fetchAuthMe())
-  }, [])
+    dispatch(fetchAuthMe());
+  }, []);
 
   return (
     <>

@@ -2,7 +2,7 @@ import { Delete } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import React from 'react';
 import { fetchUpdateTodoListNames } from '../../redux/slices/authSlice';
-import styles from './SidebarTodoListNameItem.module.css'
+import styles from './SidebarTodoListNameItem.module.css';
 import { setMainListName, deleteMainListName, fetchDeleteManyTodos } from '../../redux/slices/todosSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 
@@ -13,23 +13,22 @@ type SidebarTodoListNameItemType = {
 
 const SidebarTodoListNameItem: React.FC<SidebarTodoListNameItemType> = (props) => {
    const dispatch = useAppDispatch();
-   const todoListNames = useAppSelector(state => state.auth.data?.todoListNames)
+   const todoListNames = useAppSelector(state => state.auth.data?.todoListNames);
 
    const deleteTodoListNameItem = (name: string) => {
       if (todoListNames) {
          const todoList = todoListNames.filter(el => el !== name);
-         dispatch(fetchUpdateTodoListNames({ 'todoListNames': todoList }))
-         dispatch(fetchDeleteManyTodos({ 'todoListName': name }))
-         dispatch(deleteMainListName())
+         dispatch(fetchUpdateTodoListNames({ 'todoListNames': todoList }));
+         dispatch(fetchDeleteManyTodos({ 'todoListName': name }));
+         dispatch(deleteMainListName());
       }
-   }
+   };
 
    const onClickDeleteTodoList = () => {
       if (window.confirm('Вы действительно хотите удалить лист?')) {
          deleteTodoListNameItem(props.name);
       }
-   }
-
+   };
 
    return (
       <div className={styles.container} >

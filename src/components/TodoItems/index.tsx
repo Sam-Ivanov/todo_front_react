@@ -10,7 +10,7 @@ type TodoItemsPropsType = {
    mainList: string,
    todos: Array<TodosType>,
    isTodosLoading: boolean
-};
+}
 
 const TodoItems: React.FC<TodoItemsPropsType> = ({ todos, mainList }) => {
    const dispatch = useAppDispatch();

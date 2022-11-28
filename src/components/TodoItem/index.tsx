@@ -3,7 +3,7 @@ import { Checkbox, IconButton, Menu, MenuItem } from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchDeleteOneTodo, fetchUpdateOneTodoCompleted, fetchUpdateOneTodoText } from '../../redux/slices/todosSlice';
-import styles from './TodoItem.module.css'
+import styles from './TodoItem.module.css';
 
 type TodoItemPropsType = {
    completed?: boolean,
@@ -11,7 +11,7 @@ type TodoItemPropsType = {
    id?: string,
    isLoading?: boolean,
    key?: string | number,
-};
+}
 
 const TodoItem: React.FC<TodoItemPropsType> = (props) => {
    const [anchorEl, setAnchorEl] = React.useState(null);
@@ -39,7 +39,7 @@ const TodoItem: React.FC<TodoItemPropsType> = (props) => {
          "newText": text || ''
       }));
       setInputOpen(false);
-   }
+   };
 
    return (
       <>
