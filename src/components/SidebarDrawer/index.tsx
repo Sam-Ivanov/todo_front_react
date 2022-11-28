@@ -26,8 +26,13 @@ const SidebarDrawer: React.FC<SidebarDrawerPropsType> = ({ drawerOpen, drawerClo
       >
          <List sx={{ width: '320px' }}>
             <div className={styles.back}>
-               <div className={styles.root}>TODO LISTS</div>
-               <IconButton onClick={() => { setShowInput(true); }}>
+               <div className={styles.root}>
+                  TODO LISTS
+               </div>
+               <IconButton onClick={() => {
+                  setShowInput(true);
+               }}
+               >
                   <Add />
                </IconButton>
             </div>
