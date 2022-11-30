@@ -1,4 +1,4 @@
-import styles from './HomePageSelectList.module.css';
+import styles from './HomePageSelectList.module.scss';
 
 type HomePageSelectListPropsType = {
    name: string
@@ -6,7 +6,9 @@ type HomePageSelectListPropsType = {
 
 const HomePageSelectList: React.FC<HomePageSelectListPropsType> = ({ name }) => {
    return (
-      <div className={styles.item}>
+      <div className={styles.item} onClick={() => {
+         console.log(`Открыть лист ${name}`);
+      }}>
          {name}
       </div>
    );
