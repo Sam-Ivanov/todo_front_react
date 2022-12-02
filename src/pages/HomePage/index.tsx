@@ -8,6 +8,7 @@ import HomePageSelect from '../../components/HomePageSelectLists';
 import Input from '../../components/common/Input';
 
 import s from './HomePage.module.scss';
+import ToolBarMenu from '../../components/common/ToolBarMenu';
 
 const HomePage: React.FC = () => {
    const dispatch = useAppDispatch();
@@ -42,6 +43,7 @@ const HomePage: React.FC = () => {
             <div>
                <HomePageSelect />
             </div>}
+         <ToolBarMenu>+</ToolBarMenu>
       </>
    );
 };

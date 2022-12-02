@@ -14,3 +14,21 @@ code {
 * {
   box-sizing: border-box;
 }
+
+.todo-enter {
+  opacity: 0;
+}
+
+.todo-enter-active {
+  opacity: 1;
+  transition: 500ms;
+}
+
+.todo-exit {
+  opacity: 1;
+}
+
+.todo-exit-active {
+  opacity: 0;
+  transition: 500ms;
+}

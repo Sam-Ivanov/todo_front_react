@@ -111,6 +111,7 @@ const todosSlice = createSlice({
       },
       [fetchUpdateOneTodoCompleted.fulfilled.type]: (state, action: PayloadAction<Array<TodosType>>) => {
          state.status = 'loaded';
+
          state.todos = action.payload;
       },
       [fetchUpdateOneTodoCompleted.rejected.type]: (state) => {

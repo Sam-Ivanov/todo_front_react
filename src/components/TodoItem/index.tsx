@@ -4,6 +4,7 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchDeleteOneTodo, fetchUpdateOneTodoCompleted, fetchUpdateOneTodoText } from '../../redux/slices/todosSlice';
 import styles from './TodoItem.module.css';
+import s from '../TodoItems/TodoItems.module.css'
 
 type TodoItemPropsType = {
    completed?: boolean,
@@ -42,7 +43,7 @@ const TodoItem: React.FC<TodoItemPropsType> = (props) => {
    };
 
    return (
-      <>
+      < >
          {isInputOpen
             ?
             <form onSubmit={(e) => {
