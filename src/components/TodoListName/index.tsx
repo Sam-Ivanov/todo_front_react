@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchUpdateTodoListNames } from '../../redux/slices/authSlice';
 import { fetchUpdateManyTodos, setMainListName } from '../../redux/slices/todosSlice';
+import Input from '../common/Input';
 
 const TodoListName: React.FC = (props) => {
    const todoListNames = useAppSelector(state => state.auth.data?.todoListNames);
@@ -22,6 +23,7 @@ const TodoListName: React.FC = (props) => {
    };
 
    const updateTodoListName = () => {
+
       if (todoListName === "" || todoListName === listName) {
          setTodoListName(listName);
          setInputTodoListNameOpen(false);
@@ -54,21 +56,28 @@ const TodoListName: React.FC = (props) => {
       <div className={styles.container}>
          {isInputTodoListNameOpen
             ?
-            <form onSubmit={onSumbit}>
-               <input
-                  className={styles.input}
+            <form className={styles.form} onSubmit={onSumbit}>
+               <Input
                   type='text'
                   autoFocus
                   onBlur={updateTodoListName}
                   value={todoListName}
                   onChange={changeName}
                />
+               {/* <input
+                  className={styles.input}
+                  type='text'
+                  autoFocus
+                  onBlur={updateTodoListName}
+                  value={todoListName}
+                  onChange={changeName}
+               /> */}
             </form>
             :
             <div className={styles.name}>
                {listName}
             </div>}
-         <div className={styles.edit}>
+         {!isInputTodoListNameOpen && <div className={styles.edit}>
             <IconButton onClick={() => {
                setInputTodoListNameOpen(true);
             }}>
@@ -76,7 +85,7 @@ const TodoListName: React.FC = (props) => {
                   classes={{ root: styles.editIcon }}
                   fontSize='small' />
             </IconButton>
-         </div>
+         </div>}
       </div>
    );
 };

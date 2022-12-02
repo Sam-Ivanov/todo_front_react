@@ -13,7 +13,6 @@ import Loader from './components/common/Loader';
 function App() {
   const dispatch = useAppDispatch();
   const isAuth = useAppSelector(state => state.auth.data);
-  const authStatus = useAppSelector(state => state.auth.status);
 
   useEffect(() => {
     dispatch(fetchAuthMe());

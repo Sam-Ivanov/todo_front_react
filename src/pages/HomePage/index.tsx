@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
-import NewTodoInput from "../components/NewTodoInput";
-import TodoItems from "../components/TodoItems";
-import TodoListName from "../components/TodoListName";
-import { fetchTodos } from '../redux/slices/todosSlice';
-import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import HomePageSelect from '../components/HomePageSelectLists';
+import NewTodoInput from "../../components/NewTodoInput";
+import TodoItems from "../../components/TodoItems";
+import TodoListName from "../../components/TodoListName";
+import { fetchTodos } from '../../redux/slices/todosSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import HomePageSelect from '../../components/HomePageSelectLists';
+import Input from '../../components/common/Input';
+
+import s from './HomePage.module.scss';
 
 const HomePage: React.FC = () => {
    const dispatch = useAppDispatch();
@@ -23,6 +26,8 @@ const HomePage: React.FC = () => {
    useEffect(() => {
       dispatch(fetchTodos());
    }, []);
+
+   const isActive = true;
 
    return (
       <>
