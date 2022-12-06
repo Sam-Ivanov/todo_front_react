@@ -1,0 +1,11 @@
+.active {
+   &:focus {
+      width: 300px;
+      box-shadow: 0px 0px 7px rgb(164, 23, 199);
+      transition: 0.3s;
+   }
+}
+
+.inpShadow {
+   box-shadow: 0px 0px 5px rgb(211, 211, 211);
+}

@@ -6,7 +6,6 @@ import SidebarTodoListNameItem from '../SidebarTodoListNameItem';
 type SidebarTodoListNameItemsType = {
    todoListNames?: Array<string> | null,
    drawerClose: () => void
-
 }
 
 const SidebarTodoListNameItems: React.FC<SidebarTodoListNameItemsType> = ({ todoListNames, drawerClose }) => {

@@ -18,10 +18,10 @@ const NewTodoInput: React.FC = (props) => {
          dispatch(fetchCreateTodo({
             'todoListName': todoListName,
             'text': values.newTodo
-         }))
-         resetField('newTodo')
+         }));
+         resetField('newTodo');
       }
-   }
+   };
 
    return (
       <form onSubmit={handleSubmit(onSubmit)}>

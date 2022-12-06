@@ -21,12 +21,12 @@ const Registration: React.FC = () => {
    });
 
    const onSubmit = async (values: RegisterType) => {
-      const data = await dispatch(fetchRegistration(values))
+      const data = await dispatch(fetchRegistration(values));
       console.log(data.payload);
       if (!data.payload) {
-         alert('Не удалось зарегестрироваться.')
+         alert('Не удалось зарегестрироваться.');
       }
-   }
+   };
 
    return (
       <Paper classes={{ root: styles.root }} >
@@ -43,7 +43,8 @@ const Registration: React.FC = () => {
                helperText={errors.fullName?.message}
                {...register('fullName', { required: 'Укажите полное имя' })}
                label="Полное имя"
-               fullWidth />
+               fullWidth
+            />
             <TextField
                className={styles.field}
                type='email'
@@ -51,7 +52,8 @@ const Registration: React.FC = () => {
                helperText={errors.email?.message}
                {...register('email', { required: 'Укажите почту' })}
                label="E-Mail"
-               fullWidth />
+               fullWidth
+            />
             <TextField
                className={styles.field}
                type='password'
@@ -59,7 +61,8 @@ const Registration: React.FC = () => {
                helperText={errors.password?.message}
                {...register('password', { required: 'Укажите пароль' })}
                label="Пароль"
-               fullWidth />
+               fullWidth
+            />
             <Button
                type='submit'
                size="large"

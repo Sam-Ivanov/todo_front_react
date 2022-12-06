@@ -1,10 +1,10 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 import { DataUserType } from "../redux/slices/authSlice";
 import { TodosType } from "../redux/slices/todosSlice";
 const instance = axios.create({
    baseURL: 'https://todo-six-self.vercel.app'
    // baseURL: 'http://localhost:3001'
-})
+});
 
 export type LoginType = {
    email: string,
@@ -64,13 +64,13 @@ export const authAPI = {
    register(params: RegisterType) {
       return instance.post<DataUserType>('/register', params);
    }
-}
+};
 
 export const userAPI = {
    UpdateTodoListNames(params: UpdateTodoListNames) {
       return instance.patch<DataUserType>('/user', params);
    }
-}
+};
 
 export const todosAPI = {
    get() {
@@ -88,9 +88,8 @@ export const todosAPI = {
    deleteCompletedTodo(params: DeleteManyTodoType) {
       return instance.delete<any>(`/todos/completed/${params.todoListName}`);
    },
-
    updateTodo(params: UpdateOneTodoTextType | UpdateManyTodoListNameType | UpdateOneTodoCompletedType) {
       return instance.patch<any>('/todos', params);
    }
-}
+};
 

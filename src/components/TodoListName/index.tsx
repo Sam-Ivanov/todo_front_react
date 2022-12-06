@@ -1,10 +1,11 @@
 import { Edit } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
-import styles from './TodoListName.module.css'
+import styles from './TodoListName.module.css';
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchUpdateTodoListNames } from '../../redux/slices/authSlice';
 import { fetchUpdateManyTodos, setMainListName } from '../../redux/slices/todosSlice';
+import Input from '../common/Input';
 
 const TodoListName: React.FC = (props) => {
    const todoListNames = useAppSelector(state => state.auth.data?.todoListNames);
@@ -18,20 +19,23 @@ const TodoListName: React.FC = (props) => {
    }, [listName]);
 
    const changeName = (e: any) => {
-      setTodoListName(e.target.value)
+      setTodoListName(e.target.value);
    };
 
    const updateTodoListName = () => {
+
       if (todoListName === "" || todoListName === listName) {
          setTodoListName(listName);
          setInputTodoListNameOpen(false);
          return;
       }
+
       const newTodoListNames = todoListNames?.map(el => {
          if (el === listName) {
             return el = todoListName;
          } else return el;
-      })
+      });
+
       if (newTodoListNames) {
          dispatch(fetchUpdateManyTodos({
             "todoListName": listName,
@@ -52,27 +56,36 @@ const TodoListName: React.FC = (props) => {
       <div className={styles.container}>
          {isInputTodoListNameOpen
             ?
-            <form onSubmit={onSumbit}>
-               <input
-                  className={styles.input}
+            <form className={styles.form} onSubmit={onSumbit}>
+               <Input
                   type='text'
                   autoFocus
                   onBlur={updateTodoListName}
                   value={todoListName}
                   onChange={changeName}
                />
+               {/* <input
+                  className={styles.input}
+                  type='text'
+                  autoFocus
+                  onBlur={updateTodoListName}
+                  value={todoListName}
+                  onChange={changeName}
+               /> */}
             </form>
             :
             <div className={styles.name}>
                {listName}
             </div>}
-         <div className={styles.edit}>
-            <IconButton onClick={() => { setInputTodoListNameOpen(true) }}>
+         {!isInputTodoListNameOpen && <div className={styles.edit}>
+            <IconButton onClick={() => {
+               setInputTodoListNameOpen(true);
+            }}>
                <Edit
                   classes={{ root: styles.editIcon }}
                   fontSize='small' />
             </IconButton>
-         </div>
+         </div>}
       </div>
    );
 };
