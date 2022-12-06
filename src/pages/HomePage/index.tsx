@@ -5,10 +5,6 @@ import TodoListName from "../../components/TodoListName";
 import { fetchTodos } from '../../redux/slices/todosSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import HomePageSelect from '../../components/HomePageSelectLists';
-import Input from '../../components/common/Input';
-
-import s from './HomePage.module.scss';
-import ToolBarMenu from '../../components/common/ToolBarMenu';
 
 const HomePage: React.FC = () => {
    const dispatch = useAppDispatch();
@@ -28,8 +24,6 @@ const HomePage: React.FC = () => {
       dispatch(fetchTodos());
    }, []);
 
-   const isActive = true;
-
    return (
       <>
          {mainList
@@ -41,9 +35,9 @@ const HomePage: React.FC = () => {
             </div>
             :
             <div>
-               <HomePageSelect />
+               Выберите или создайте новый лист
+               {/* <HomePageSelect /> */}
             </div>}
-         <ToolBarMenu>+</ToolBarMenu>
       </>
    );
 };

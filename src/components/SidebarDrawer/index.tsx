@@ -7,12 +7,13 @@ import SidebarTodoListNameItems from '../SidebarTodoListNameItems';
 import styles from './SidebarDrawer.module.css';
 
 type SidebarDrawerPropsType = {
+   drawerHeader: string,
    dataUser: DataUserType | null,
    drawerOpen: boolean,
    drawerClose: () => void
 }
 
-const SidebarDrawer: React.FC<SidebarDrawerPropsType> = ({ drawerOpen, drawerClose, dataUser }) => {
+const SidebarDrawer: React.FC<SidebarDrawerPropsType> = ({ drawerHeader, drawerOpen, drawerClose, dataUser }) => {
    const [isShowInput, setShowInput] = useState(false);
    const closeInput = () => {
       setShowInput(false);
@@ -27,7 +28,7 @@ const SidebarDrawer: React.FC<SidebarDrawerPropsType> = ({ drawerOpen, drawerClo
          <List sx={{ width: '320px' }}>
             <div className={styles.back}>
                <div className={styles.root}>
-                  TODO LISTS
+                  {drawerHeader}
                </div>
                <IconButton onClick={() => {
                   setShowInput(true);

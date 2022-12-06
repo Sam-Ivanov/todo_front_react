@@ -1,15 +1,15 @@
-import styles from './ToolBarMenu.module.scss'
+import styles from './ToolbarMenu.module.scss'
 import React from 'react';
 
-type ToolBarMenu = {
+type ToolbarMenuProps = {
    children: React.ReactNode
 }
 
-const ToolBarMenu = ({ children, ...props }: ToolBarMenu) => {
+const ToolbarMenu = ({ children, ...props }: ToolbarMenuProps) => {
    const [isOpen, setOpen] = React.useState(false);
    return (
       <div className={styles.menuWrapper} onClick={() => { setOpen(!isOpen) }}>
-         <div>
+         <div >
             {children}
          </div>
          <div className={isOpen ? styles.munuItemsWrapper : styles.munuItemsWrapper + ' ' + styles.hiden}>
@@ -27,4 +27,4 @@ const ToolBarMenu = ({ children, ...props }: ToolBarMenu) => {
    );
 };
 
-export default ToolBarMenu;
+export default ToolbarMenu;

@@ -2,18 +2,16 @@ import { AppBar, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/ma
 import { List } from '@mui/icons-material';
 import { Avatar } from '@mui/material';
 import React, { useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { useAppDispatch } from '../../hooks/redux';
 import { DataUserType, logout } from '../../redux/slices/authSlice';
 import SidebarDrawer from '../SidebarDrawer';
-import Loader from '../common/Loader';
+import SidebarDrawer2 from '../SidebarDrawer2';
 
 type HeaderPropsType = {
    isAuth: DataUserType | null
 }
 
 const Header: React.FC<HeaderPropsType> = ({ isAuth }) => {
-   const authStatus = useAppSelector(state => state.auth.status);
-   const todoStatus = useAppSelector(state => state.todo.status);
 
    const [anchorEl, setAnchorEl] = useState(null);
    const [isDrawerOpen, setDrawerOpen] = useState(false);
@@ -36,8 +34,8 @@ const Header: React.FC<HeaderPropsType> = ({ isAuth }) => {
 
    return (
       <>
-         {(todoStatus || authStatus) === 'loading' && <Loader />}
-         <AppBar position='static'>
+         {/* {(todoStatus || authStatus) === 'loading' && <Loader />} */}
+         <AppBar position='sticky'>
             <Toolbar >
                {isAuth &&
                   <IconButton
@@ -86,12 +84,21 @@ const Header: React.FC<HeaderPropsType> = ({ isAuth }) => {
             </Toolbar>
          </AppBar>
          {isAuth &&
-            <SidebarDrawer
+            // <SidebarDrawer
+            //    drawerHeader={'TODO LISTS'}
+            //    dataUser={isAuth}
+            //    drawerOpen={isDrawerOpen}
+            //    drawerClose={() => {
+            //       setDrawerOpen(false);
+            //    }}
+            // />
+            <SidebarDrawer2
+               isdrawerOpen={isDrawerOpen}
+               setDrawerOpen={setDrawerOpen}
                dataUser={isAuth}
-               drawerOpen={isDrawerOpen}
-               drawerClose={() => {
-                  setDrawerOpen(false);
-               }} />}
+               drawerHeader={'TODO LISTS'}
+            />
+         }
       </>
    );
 };
