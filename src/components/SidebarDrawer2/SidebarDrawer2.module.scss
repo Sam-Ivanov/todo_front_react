@@ -1,5 +1,5 @@
 $widthDrawer: 320px;
-$openDrawerTransition: 300ms;
+$openDrawerTransition: 400ms;
 
 .menu {
    position: fixed;
@@ -10,8 +10,12 @@ $openDrawerTransition: 300ms;
    z-index: 2000;
    transform: translateX(-100%);
    transition: $openDrawerTransition;
+   opacity: 0;
+   // visibility: hidden;
    &.active {
-      transform: translateX(0);
+      opacity: 1;
+      // visibility: visible;
+      transform: translateX(0%);
       transition: $openDrawerTransition;
    }
 }
@@ -53,6 +57,7 @@ $openDrawerTransition: 300ms;
    display: flex;
    justify-content: center;
 }
+
 .addList {
    line-height: 17px;
    padding: 5px;
