@@ -19,8 +19,6 @@ type SidebarDrawerPropsType = {
 const SidebarDrawer2: React.FC<SidebarDrawerPropsType> = ({ isdrawerOpen, setDrawerOpen, drawerHeader, dataUser }) => {
    const [isShowInput, setShowInput] = useState(false);
 
-
-
    return (
       <div
          className={isdrawerOpen ? s.blur : s.blurOff}
@@ -45,7 +43,7 @@ const SidebarDrawer2: React.FC<SidebarDrawerPropsType> = ({ isdrawerOpen, setDra
                      <MdAdd />
                   </div>
                </div>
-               <div >
+               <div className={s.items}>
                   {isShowInput && <NewSidebarTodoListNameInput closeInput={() => { setShowInput(false) }} />}
                   <SidebarTodoListNameItems
                      todoListNames={dataUser?.todoListNames}

@@ -4,7 +4,7 @@ import { Avatar } from '@mui/material';
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../hooks/redux';
 import { DataUserType, logout } from '../../redux/slices/authSlice';
-import SidebarDrawer from '../SidebarDrawer';
+// import SidebarDrawer from '../SidebarDrawer';
 import SidebarDrawer2 from '../SidebarDrawer2';
 
 type HeaderPropsType = {

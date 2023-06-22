@@ -11,6 +11,7 @@ $openDrawerTransition: 400ms;
    transform: translateX(-100%);
    transition: $openDrawerTransition;
    opacity: 0;
+
    // visibility: hidden;
    &.active {
       opacity: 1;
@@ -69,9 +70,16 @@ $openDrawerTransition: 400ms;
    height: 30px;
    border-radius: 50%;
    transition: 200ms;
+
    &:hover {
       background-color: rgb(242, 245, 255);
       box-shadow: 0 0 5px 0 rgb(200, 200, 200);
       transition: 200ms;
    }
+}
+
+.items {
+   overflow: auto;
+   height: 100%;
+
 }
