@@ -6,7 +6,8 @@ export type DataUserType = {
    fullName: string,
    email: string,
    todoListNames: Array<string>,
-   token?: string
+   token?: string,
+   message?: string
 }
 
 type AuthInitialStateType = {
@@ -26,8 +27,12 @@ export const fetchUserData = createAsyncThunk('auth/fetchUserData', async (param
 
 export const fetchAuthMe = createAsyncThunk('auth/fetchAuthMe', async () => {
    const { data } = await authAPI.me();
+
    return data;
 });
+
+
+
 
 export const fetchRegistration = createAsyncThunk('auth/fetchRegistration', async (params: RegisterType) => {
    const { data } = await authAPI.register(params);
@@ -48,6 +53,7 @@ const authSlice = createSlice({
       }
    },
    extraReducers: {
+
       [fetchUserData.pending.type]: (state) => {
          state.status = 'loading';
          // state.data = null;
@@ -63,15 +69,18 @@ const authSlice = createSlice({
 
       [fetchAuthMe.pending.type]: (state) => {
          state.status = 'loading';
+
          // state.data = null;
       },
       [fetchAuthMe.fulfilled.type]: (state, action: PayloadAction<DataUserType>) => {
          state.status = 'loaded';
          state.data = action.payload;
       },
-      [fetchAuthMe.rejected.type]: (state) => {
+      [fetchAuthMe.rejected.type]: (state, action: PayloadAction<DataUserType>) => {
+
          state.status = 'error';
          // state.data = null;
+         state.data = action.payload;
       },
 
       [fetchRegistration.pending.type]: (state) => {
